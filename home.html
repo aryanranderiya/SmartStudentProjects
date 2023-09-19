@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="home.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="navbar">
+        <a id="title">Smart Student Projects</a>
+        <a class="active" href="home.html"
+          ><i class="fa-solid fa-house"></i> Home</a
+        >
+        <a href="#"><i class="fa-solid fa-ranking-star"></i> Ranking</a>
+        <a href="#"><i class="fa-solid fa-lightbulb"></i> Projects</a>
+
+        <a href="login_register.html" id="menu_loginregister"
+          ><i class="fa-solid fa-right-to-bracket"></i> Login / Register</a
+        >
+
+        <a href="#" style="display: none" id="menu_profile"
+          ><i class="fa-solid fa-user"></i> Profile</a
+        >
+        <a href="#" style="display: none" id="menu_logout"
+          ><i class="fa-solid fa-right-from-bracket" style="color: #ff0000"></i
+        ></a>
+      </div>
+    </header>
+
+    <!-- 
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+      import {
+        getDatabase,
+        ref,
+        set,
+      } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+
+      const firebaseConfig = {
+        databaseURL:
+          "https://smart-student-projects-default-rtdb.firebaseio.com/",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const database = getDatabase(app);
+
+      var apiUrl =
+        "https://api.data.gov.in/resource/44bea382-c525-4740-8a07-04bd20a99b52?api-key=579b464db66ec23bdd00000159244116cf4748d26db4af8a31c90893&format=json";
+
+      function fetchPage(pageNumber) {
+        var pageUrl = apiUrl + "&offset=" + pageNumber * 10;
+
+        fetch(pageUrl)
+          .then((response) => response.json())
+          .then((data) => {
+            var colleges = data.records;
+
+            colleges.forEach(function (college, index) {
+              const db = getDatabase();
+              set(ref(db, "Universities/" + college.s_no_), {
+                College_Name: college.college_name,
+                State: college.state_name,
+                District: college.district_name,
+              })
+                .then(() => {
+                  console.log(
+                    "Data for ID " + college.s_no_ + " uploaded successfully."
+                  );
+                })
+                .catch((error) => {
+                  console.error(
+                    "Error uploading data for ID " +
+                      college.s_no_ +
+                      ": " +
+                      error.message
+                  );
+                });
+
+              console.log("ID: " + college.s_no_);
+
+              //   console.log("University Name: " + college.university_name);
+              console.log("College Name: " + college.college_name);
+              //   console.log("College Type: " + college.college_type);
+              //   console.log("State Name: " + college.state_name);
+              //   console.log("District Name: " + college.district_name);
+              console.log("\n");
+            });
+
+            if (colleges.length === 10) {
+              fetchPage(pageNumber + 1);
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching data:", error);
+          });
+      }
+
+      fetchPage(0);
+    </script> -->
+  </body>
+  <script>
+    src = "https://kit.fontawesome.com/3d65243769.js";
+    crossorigin = "anonymous";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyD-9GldTb1_2O8tDVerCUMa3IQJMfcH9XE",
+      authDomain: "smart-student-projects.firebaseapp.com",
+      projectId: "smart-student-projects",
+      storageBucket: "smart-student-projects.appspot.com",
+      messagingSenderId: "184253923545",
+      appId: "1:184253923545:web:ed9f6faa54fd9bd8f23ec8",
+      measurementId: "G-WY5EZLXTS8",
+    };
+
+    const app = initializeApp(firebaseConfig);
+
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        document.getElementById("menu_logout").style.display = "block";
+        document.getElementById("menu_profile").style.display = "block";
+        document.getElementById("menu_loginregister").style.display = "none";
+      } else {
+        document.getElementById("menu_logout").style.display = "none";
+        document.getElementById("menu_profile").style.display = "none";
+        document.getElementById("menu_loginregister").style.display = "block";
+      }
+    });
+  </script>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="login_register.css" />
+    <title>Smart Student Projects</title>
+  </head>
+  <body>
+    <div class="left">
+        <center>    
+            <img height="500" width="500" src="reg_login_image.png"/>
+        </center>
+    </div>
+    <div class="right">
+        <center>
+            <h1>Welcome to Smart Student Projects!</h1>
+            <h2>Signup / Login</h1>
+            <button type="button" class="google-sign-in-button" id="login">
+                Sign in with Google
+            </button>
+            <br>
+            <a href="home.html">Continue without Login</a>
+        </center>
+    </div>
+  </body>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+
+    import {
+      getAuth,
+      signInWithPopup,
+      GoogleAuthProvider,
+    } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyD-9GldTb1_2O8tDVerCUMa3IQJMfcH9XE",
+      authDomain: "smart-student-projects.firebaseapp.com",
+      projectId: "smart-student-projects",
+      storageBucket: "smart-student-projects.appspot.com",
+      messagingSenderId: "184253923545",
+      appId: "1:184253923545:web:ed9f6faa54fd9bd8f23ec8",
+      measurementId: "G-WY5EZLXTS8",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider(app);
+
+    login.addEventListener("click", (e) => {
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          const credential = GoogleAuthProvider.credentialFromResult(result);
+          const token = credential.accessToken;
+          const user = result.user;
+            window.location.href = 'home.html';
+          alert("Welcome" + user.displayName);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          const email = error.customData.email;
+          const credential = GoogleAuthProvider.credentialFromError(error);
+          alert(errorMessage);
+        });
+    });
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+    .catch(function(error) {
+        console.log(error)
+    });
+
+  </script>
+</html>
