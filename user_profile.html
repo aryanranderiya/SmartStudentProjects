@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" a href="bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="user_profile.css" />
+    <script src="bootstrap/js/bootstrap.js"></script>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css"
+      rel="stylesheet"
+    />
+
+    <title>User Profile</title>
+  </head>
+  <body>
+    <section style="background-color: #eee">
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="card mb-4" id="card_id">
+              <div class="card-body text-center">
+                <img
+                  id="user_image"
+                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                  alt="avatar"
+                  class="rounded-circle img-fluid"
+                  style="width: 100px"
+                />
+                <h5 class="my-3" id="user_name">Name</h5>
+                <p class="text-muted mb-1" id="user_email">E-Mail</p>
+                <br />
+                <div class="d-flex justify-content-center mb-2">
+                  <button type="button" class="btn btn-primary">Follow</button>
+                  <button type="button" class="btn btn-outline-primary ms-1">
+                    Message
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="card mb-4 mb-lg-0" id="card_id">
+              <div class="card-body p-0">
+                <ul class="list-group list-group-flush rounded-3">
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center p-3"
+                  >
+                    <i class="fas fa-globe fa-lg text-warning"></i>
+                    <p class="mb-0">https://mdbootstrap.com</p>
+                  </li>
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center p-3"
+                  >
+                    <i class="fab fa-github fa-lg" style="color: #333333"></i>
+                    <p class="mb-0">mdbootstrap</p>
+                  </li>
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center p-3"
+                  >
+                    <i class="fab fa-twitter fa-lg" style="color: #55acee"></i>
+                    <p class="mb-0">@mdbootstrap</p>
+                  </li>
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center p-3"
+                  >
+                    <i
+                      class="fab fa-instagram fa-lg"
+                      style="color: #ac2bac"
+                    ></i>
+                    <p class="mb-0">mdbootstrap</p>
+                  </li>
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center p-3"
+                  >
+                    <i
+                      class="fab fa-facebook-f fa-lg"
+                      style="color: #3b5998"
+                    ></i>
+                    <p class="mb-0">mdbootstrap</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <div class="card mb-4" id="card_id">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0"><b>Full Name</b></p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0" id="user_name2">Name</p>
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0"><b>Email</b></p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0" id="user_email2">
+                      example@example.com
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="card mb-4 mb-md-0" id="card_id">
+                  <div class="card-body">
+                    <p class="mb-4">
+                      <span class="text-primary font-italic me-1"
+                        >assigment</span
+                      >
+                      Project Status
+                    </p>
+                    <p class="mb-1" style="font-size: 0.77rem">Web Design</p>
+                    <div class="progress rounded" style="height: 5px">
+                      <div
+                        class="progress-bar"
+                        role="progressbar"
+                        style="width: 80%"
+                        aria-valuenow="80"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <p class="mt-4 mb-1" style="font-size: 0.77rem">
+                      Website Markup
+                    </p>
+                    <div class="progress rounded" style="height: 5px">
+                      <div
+                        class="progress-bar"
+                        role="progressbar"
+                        style="width: 72%"
+                        aria-valuenow="72"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <p class="mt-4 mb-1" style="font-size: 0.77rem">One Page</p>
+                    <div class="progress rounded" style="height: 5px">
+                      <div
+                        class="progress-bar"
+                        role="progressbar"
+                        style="width: 89%"
+                        aria-valuenow="89"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <p class="mt-4 mb-1" style="font-size: 0.77rem">
+                      Mobile Template
+                    </p>
+                    <div class="progress rounded" style="height: 5px">
+                      <div
+                        class="progress-bar"
+                        role="progressbar"
+                        style="width: 55%"
+                        aria-valuenow="55"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <p class="mt-4 mb-1" style="font-size: 0.77rem">
+                      Backend API
+                    </p>
+                    <div class="progress rounded mb-2" style="height: 5px">
+                      <div
+                        class="progress-bar"
+                        role="progressbar"
+                        style="width: 66%"
+                        aria-valuenow="66"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card mb-4 mb-md-0" id="card_id">
+                  <div class="card-body">
+                    <p class="mb-4">
+                      <span class="text-primary font-italic me-1"
+                        >assigment</span
+                      >
+                      Project Status
+                    </p>
+                    <p class="mb-1" style="font-size: 0.77rem">Web Design</p>
+                    <div class="progress rounded" style="height: 5px">
+                      <div
+                        class="progress-bar"
+                        role="progressbar"
+                        style="width: 80%"
+                        aria-valuenow="80"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <p class="mt-4 mb-1" style="font-size: 0.77rem">
+                      Website Markup
+                    </p>
+                    <div class="progress rounded" style="height: 5px">
+                      <div
+                        class="progress-bar"
+                        role="progressbar"
+                        style="width: 72%"
+                        aria-valuenow="72"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <p class="mt-4 mb-1" style="font-size: 0.77rem">One Page</p>
+                    <div class="progress rounded" style="height: 5px">
+                      <div
+                        class="progress-bar"
+                        role="progressbar"
+                        style="width: 89%"
+                        aria-valuenow="89"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <p class="mt-4 mb-1" style="font-size: 0.77rem">
+                      Mobile Template
+                    </p>
+                    <div class="progress rounded" style="height: 5px">
+                      <div
+                        class="progress-bar"
+                        role="progressbar"
+                        style="width: 55%"
+                        aria-valuenow="55"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <p class="mt-4 mb-1" style="font-size: 0.77rem">
+                      Backend API
+                    </p>
+                    <div class="progress rounded mb-2" style="height: 5px">
+                      <div
+                        class="progress-bar"
+                        role="progressbar"
+                        style="width: 66%"
+                        aria-valuenow="66"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="container">
+              <div class="row">
+                <form class="col-md-4">
+                  <input
+                    type="text"
+                    id="universitySelect"
+                    class="form-control"
+                    placeholder="Search for a university"
+                  />
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/algoliasearch/lite@3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4"></script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+    import {
+      getDatabase,
+      ref,
+      onValue,
+    } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+
+    import {
+      getAuth,
+      browserSessionPersistence,
+      onAuthStateChanged,
+    } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyD-9GldTb1_2O8tDVerCUMa3IQJMfcH9XE",
+      authDomain: "smart-student-projects.firebaseapp.com",
+      projectId: "smart-student-projects",
+      storageBucket: "smart-student-projects.appspot.com",
+      messagingSenderId: "184253923545",
+      appId: "1:184253923545:web:ed9f6faa54fd9bd8f23ec8",
+      measurementId: "G-WY5EZLXTS8",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const user = auth.currentUser;
+    const database = getDatabase();
+
+    onAuthStateChanged(auth, function (user) {
+      console.log("Auth state changed:", user);
+
+      if (user) {
+        var name = user.displayName;
+        var email = user.email;
+        var photoURL = user.photoURL;
+        var userImage = document.getElementById("user_image");
+        userImage.src = photoURL;
+        document.getElementById("user_name").textContent = name;
+        document.getElementById("user_name2").textContent = name;
+
+        document.getElementById("user_email").textContent = email;
+        document.getElementById("user_email2").textContent = email;
+      } else {
+        console.log("No user is signed in.");
+      }
+    });
+
+    // onValue(ref(database, "Universities/1/"), (snapshot) => {
+    //   const data = snapshot.val();
+    //   var universitiesComboBox = document.getElementById(
+    //     "universitiesComboBox"
+    //   );
+
+    //   universitiesComboBox.innerHTML =
+    //     '<option value="">Select University</option>';
+
+    //   snapshot.forEach(function (childSnapshot) {
+    //     var universityName = childSnapshot.val();
+
+    //     var option = document.createElement("option");
+    //     option.value = universityName;
+    //     option.textContent = universityName;
+    //     universitiesComboBox.appendChild(option);
+    //   });
+    // });
+
+
+    // REMOVE THIS CODE AND REPLACE WITH ALGOLIA SEARCH FOR FAST SEARCH 
+
+    // const universitySelectInput = document.getElementById("universitySelect");
+
+    // universitySelectInput.addEventListener("input", handleUniversitySearch);
+
+    // function handleUniversitySearch() {
+    //   const searchTerm = universitySelectInput.value.toLowerCase();
+
+    //   const universitySelect = document.getElementById("universitySelect");
+    //   universitySelect.innerHTML = "";
+
+    //   onValue(ref(database, "Universities"), (snapshot) => {
+    //     snapshot.forEach((collegeSnapshot) => {
+    //       const collegeId = collegeSnapshot.key;
+    //       const collegeData = collegeSnapshot.val();
+
+    //       if (
+    //         collegeData &&
+    //         collegeData.College_Name &&
+    //         collegeData.College_Name.toLowerCase().includes(searchTerm)
+    //       ) {
+    //         onValue(
+    //           ref(database, `Universities/${collegeId}`),
+    //           (universitySnapshot) => {
+    //             universitySnapshot.forEach((universityChildSnapshot) => {
+    //               const universityName = universityChildSnapshot
+    //                 .val()
+    //                 .toLowerCase();
+
+    //               const option = document.createElement("option");
+    //               option.value = universityName;
+    //               option.textContent = universityChildSnapshot.val();
+    //               universitySelect.appendChild(option);
+    //             });
+    //           }
+    //         );
+    //       }
+    //     });
+    //   });
+    // }
+  </script>
+</html>

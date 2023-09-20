@@ -3,10 +3,6 @@
   <head>
     <title>Home</title>
     <link rel="stylesheet" type="text/css" href="home.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
   </head>
   <body>
     <header>
@@ -22,10 +18,10 @@
           ><i class="fa-solid fa-right-to-bracket"></i> Login / Register</a
         >
 
-        <a href="#" style="display: none" id="menu_profile"
+        <a href="user_profile.html" id="menu_profile"
           ><i class="fa-solid fa-user"></i> Profile</a
         >
-        <a href="#" style="display: none" id="menu_logout"
+        <a href="#" id="menu_logout"
           ><i class="fa-solid fa-right-from-bracket" style="color: #ff0000"></i
         ></a>
       </div>
@@ -102,9 +98,29 @@
       fetchPage(0);
     </script> -->
   </body>
-  <script>
-    src = "https://kit.fontawesome.com/3d65243769.js";
-    crossorigin = "anonymous";
+  <script
+    type="module"
+    src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js"
+  ></script>
+  <script
+    type="module"
+    src="https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js"
+  ></script>
+
+  <script
+    src="https://kit.fontawesome.com/3d65243769.js"
+    crossorigin="anonymous"
+  ></script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+
+    import {
+      getAuth,
+      browserSessionPersistence,
+      onAuthStateChanged,
+      signOut,
+    } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyD-9GldTb1_2O8tDVerCUMa3IQJMfcH9XE",
@@ -115,19 +131,40 @@
       appId: "1:184253923545:web:ed9f6faa54fd9bd8f23ec8",
       measurementId: "G-WY5EZLXTS8",
     };
-
     const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const user = auth.currentUser;
 
-    firebase.auth().onAuthStateChanged(function (user) {
+    onAuthStateChanged(auth, function (user) {
+      console.log("Auth state changed:", user);
+
       if (user) {
         document.getElementById("menu_logout").style.display = "block";
         document.getElementById("menu_profile").style.display = "block";
         document.getElementById("menu_loginregister").style.display = "none";
+
+        console.log(user.displayName + "is logged in!");
       } else {
         document.getElementById("menu_logout").style.display = "none";
         document.getElementById("menu_profile").style.display = "none";
         document.getElementById("menu_loginregister").style.display = "block";
       }
     });
+
+    document
+      .getElementById("menu_logout")
+      .addEventListener("click", function () {
+        // window.confirm("Are you sure you want to Logout?");
+
+        if (confirm("Are you sure you want to Logout?")) {
+          signOut(auth)
+            .then(() => {
+              console.log("Successfully logged out!");
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }
+      });
   </script>
 </html>
