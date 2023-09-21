@@ -17,24 +17,48 @@ body {
   pointer-events: none;
 }
 
+/* Navbar Container */
 .navbar {
   width: 100%;
   overflow: auto;
-
   background: rgba(255, 255, 255, 0.171);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(15.2px);
   -webkit-backdrop-filter: blur(15.2px);
   border: 1px solid rgba(255, 255, 255, 0.23);
-  /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
-  /* border: 1px solid rgba(255, 255, 255, 0.23); */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#title-section {
+  text-align: left;
+  white-space: nowrap;
+  width: 250px; /* Adjust the width as needed */
+}
+
+#pages-section {
+  text-align: center;
+  white-space: nowrap;
+}
+
+#pages-section a {
+  margin-right: 30px;
+}
+
+#login-profile-section {
+  margin-right: 3%;
+  text-align: right;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
 }
 
 .navbar a {
   float: left;
   text-align: center;
-  padding: 12px;
+  padding: 8px;
   color: white;
   text-decoration: none;
   font-size: 17px;
@@ -75,6 +99,10 @@ input {
   text-indent: 15px;
 }
 
+.searchTerm::placeholder {
+  color: #ffffffb2
+}
+
 .searchTerm {
   width: 100%;
   border: 3px solid #00bbff;
@@ -84,10 +112,11 @@ input {
   border-radius: 20px 0 0 20px;
   outline: none;
   color: #9dbfaf;
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .searchTerm:focus {
-  color: #000000;
+  color: #ffffff;
 }
 
 .searchButton {

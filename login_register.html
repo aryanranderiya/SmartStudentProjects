@@ -7,24 +7,30 @@
   </head>
   <body>
     <div class="left">
-        <center>    
-            <img height="500" width="500" src="reg_login_image.png"/>
-        </center>
+      <center>
+        <img height="500" width="500" src="reg_login_image.png" />
+      </center>
     </div>
     <div class="right">
-        <center>
-            <h1>Welcome to Smart Student Projects!</h1>
-            <h2>Signup / Login</h1>
-            <button type="button" class="google-sign-in-button" id="login">
-                Sign in with Google
-            </button>
-            <br>
-            <a href="home.html">Continue without Login</a>
-        </center>
+      <center>
+        <h1>Smart Student Projects!</h1>
+        <p>Please Register / Login</p>
+        <button type="button" class="google-sign-in-button" id="login">
+          Sign in with Google
+        </button>
+        <br />
+        <a href="home.html">Continue without Login</a>
+      </center>
     </div>
   </body>
-<script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-<script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+  <script
+    type="module"
+    src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"
+  ></script>
+  <script
+    type="module"
+    src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"
+  ></script>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
@@ -34,7 +40,7 @@
       signInWithPopup,
       GoogleAuthProvider,
       setPersistence,
-      browserSessionPersistence
+      browserSessionPersistence,
     } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
 
     const firebaseConfig = {
@@ -57,7 +63,7 @@
           const credential = GoogleAuthProvider.credentialFromResult(result);
           const token = credential.accessToken;
           const user = result.user;
-            window.location.href = 'home.html';
+          window.location.href = "home.html";
           alert("Welcome" + user.displayName);
         })
         .catch((error) => {
@@ -68,10 +74,8 @@
           alert(errorMessage);
         });
     });
-    setPersistence(auth, browserSessionPersistence)
-    .catch(function(error) {
-        console.log(error)
+    setPersistence(auth, browserSessionPersistence).catch(function (error) {
+      console.log(error);
     });
-
   </script>
 </html>

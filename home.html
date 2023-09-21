@@ -8,23 +8,36 @@
   <body>
     <header>
       <div class="navbar">
-        <a id="title">Smart Student Projects</a>
-        <a class="active" href="home.html"
-          ><i class="fa-solid fa-house"></i> Home</a
-        >
-        <a href="#"><i class="fa-solid fa-ranking-star"></i> Ranking</a>
-        <a href="#"><i class="fa-solid fa-lightbulb"></i> Projects</a>
+        <div class="navbar-section" id="title-section">
+          <a id="title">Smart Student Projects</a>
+        </div>
 
-        <a href="login_register.html" id="menu_loginregister"
-          ><i class="fa-solid fa-right-to-bracket"></i> Login / Register</a
-        >
+        <div class="navbar-section" id="pages-section">
+          <a class="active" href="home.html"
+            ><i class="fa-solid fa-house"></i> Home</a
+          >
+          <a href="ranking.html"
+            ><i class="fa-solid fa-ranking-star"></i> Ranking</a
+          >
+          <a href="projects.html"
+            ><i class="fa-solid fa-lightbulb"></i> Projects</a
+          >
+        </div>
 
-        <a href="user_profile.html" id="menu_profile"
-          ><i class="fa-solid fa-user"></i> Profile</a
-        >
-        <a href="#" id="menu_logout"
-          ><i class="fa-solid fa-right-from-bracket" style="color: #ff0000"></i
-        ></a>
+        <div class="navbar-section" id="login-profile-section">
+          <a href="login_register.html" id="menu_loginregister"
+            ><i class="fa-solid fa-right-to-bracket"></i> Login / Register</a
+          >
+          <a href="user_profile.html" id="menu_profile"
+            ><i class="fa-solid fa-user"></i> Profile</a
+          >
+          <a href="#" id="menu_logout"
+            ><i
+              class="fa-solid fa-right-from-bracket fa-lg"
+              style="color: #ff0000"
+            ></i
+          ></a>
+        </div>
       </div>
     </header>
 
@@ -98,7 +111,7 @@
           <img src="projects.png" class="cover-image" alt="University Image" />
         </div>
         <div class="info">
-          <p class="title">Top Projects</p>
+          <p class="title">Top Innovative Projects</p>
           <p>
             <i class="fa-solid fa-medal" style="color: #ffd700"></i> Project 1
           </p>
@@ -231,6 +244,9 @@
         document.getElementById("menu_logout").style.display = "block";
         document.getElementById("menu_profile").style.display = "block";
         document.getElementById("menu_loginregister").style.display = "none";
+
+        const profileLink = document.getElementById("menu_profile");
+        profileLink.innerHTML = `<a href="user_profile.html" id="menu_profile"><i class="fa-solid fa-user"></i> ${user.displayName}'s Profile</a>`;
 
         console.log(user.displayName + "is logged in!");
       } else {
