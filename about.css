@@ -1,0 +1,42 @@
+@font-face {
+  font-family: "CustomHelvetica";
+  src: url(Helvetica.ttf);
+}
+
+body {
+  background-image: linear-gradient(120deg, #121212 0%, #424242 100%);
+}
+
+* {
+  font-family: "CustomHelvetica";
+  color: white;
+}
+
+p {
+  padding: 20px;
+  font-size: 12px;
+}
+
+h1 {
+  margin-bottom: -10px;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 400px;
+  width: 600px;
+
+  background: rgba(255, 255, 255, 0.171);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15.2px);
+  -webkit-backdrop-filter: blur(15.2px);
+  border: 1px solid rgba(255, 255, 255, 0.23);
+}
+
+#anchorbtn {
+  text-decoration: none;
+}
