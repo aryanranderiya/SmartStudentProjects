@@ -3,11 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="navbar.css" />
     <link rel="stylesheet" href="about.css" />
     <link rel="stylesheet" href="button.css" />
     <title>About Us</title>
   </head>
   <body>
+    <header>
+      <div class="navbar">
+        <div class="navbar-section" id="title-section">
+          <a id="title">Smart Student Projects</a>
+        </div>
+
+        <div class="navbar-section" id="pages-section">
+          <a href="home.html"><i class="fa-solid fa-house"></i> Home</a>
+          <a class="active" href="about.html"
+            ><i class="fa-solid fa-address-card"></i> About</a
+          >
+          <a href="ranking.html"
+            ><i class="fa-solid fa-ranking-star"></i> Ranking</a
+          >
+          <a href="projects.html"
+            ><i class="fa-solid fa-lightbulb"></i> Projects</a
+          >
+        </div>
+
+        <div class="navbar-section" id="login-profile-section">
+          <a href="login_register.html" id="menu_loginregister"
+            ><i class="fa-solid fa-right-to-bracket"></i> Login / Register</a
+          >
+          <a href="user_profile.html" id="menu_profile"
+            ><i class="fa-solid fa-user"></i> Profile</a
+          >
+          <a href="#" id="menu_logout"
+            ><i
+              class="fa-solid fa-right-from-bracket fa-lg"
+              style="color: #ff0000"
+            ></i
+          ></a>
+        </div>
+      </div>
+    </header>
     <div class="container">
       <center>
         <h1>Smart Student Projects!</h1>
