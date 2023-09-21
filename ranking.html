@@ -3,7 +3,72 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="ranking.css" />
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <script
+      src="https://kit.fontawesome.com/3d65243769.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Ranking</title>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <center>
+            <h2>Top Students</h2>
+          </center>
+          <table class="table align-middle mb-0 bg-white">
+            <br />
+            <thead class="bg-light">
+              <tr>
+                <th>Name</th>
+                <th>College / University</th>
+                <th>Rank</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <img
+                      src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                      alt=""
+                      style="width: 45px; height: 45px"
+                      class="rounded-circle"
+                    />
+                    <div class="ms-3">
+                      <p class="fw-bold mb-1">John Doe</p>
+                      <p class="text-muted mb-0">john.doe@gmail.com</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <p class="fw-normal mb-1">Software engineer</p>
+                  <p class="text-muted mb-0">IT department</p>
+                </td>
+                <td>
+                  <span class="badge badge-success rounded-pill d-inline">
+                    Rank
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br />
+        </div>
+
+        <div class="col-md-4">
+          <center><h2>Top Universities</h2></center>
+          <table class="table align-middle mb-0 bg-white"></table>
+        </div>
+
+        <div class="col-md-4">
+          <center><h2>Top Projects</h2></center>
+          <table class="table align-middle mb-0 bg-white"></table>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
