@@ -14,7 +14,7 @@ body {
 
 p {
   padding: 20px;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 h1 {
@@ -26,8 +26,8 @@ h1 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 400px;
-  width: 600px;
+  height: 500px;
+  width: 700px;
 
   background: rgba(255, 255, 255, 0.171);
   border-radius: 16px;
