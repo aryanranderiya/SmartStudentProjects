@@ -3,6 +3,7 @@
   <head>
     <title>Home</title>
     <link rel="stylesheet" type="text/css" href="home.css" />
+    <link rel="stylesheet" type="text/css" href="home.scss" />
   </head>
   <body>
     <header>
@@ -27,6 +28,67 @@
       </div>
     </header>
 
+    <div class="wrap">
+      <div class="search">
+        <input
+          type="text"
+          class="searchTerm"
+          placeholder="Search for Projects..."
+        />
+        <button type="submit" class="searchButton">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="card-container">
+
+      <div class="card" id="university_card">
+        <div class="header">
+          <img src="university.png" class="cover-image" alt="University Image" />
+        </div>
+        <div class="info">
+          <p class="title">Top Universities</p>
+          <p>#1 text</p>
+          <p>#2 text</p>
+          <p>#3 text</p>
+        </div>
+        <div class="footer">
+          <p class="tag">Based on Number of Projects</p>
+          <button type="button" class="action">View More...</button>
+        </div>
+      </div>
+
+      <div class="card" id="projects_card">
+        <div class="header"></div>
+        <div class="info">
+          <p class="title">Top Projects</p>
+          <p>#1 text</p>
+          <p>#2 text</p>
+          <p>#3 text</p>
+        </div>
+        <div class="footer">
+          <p class="tag">Based on Number of Likes</p>
+          <button type="button" class="action">View More...</button>
+        </div>
+      </div>
+
+      
+      <div class="card" id="students_card">
+        <div class="header">
+        </div>
+        <div class="info">
+          <p class="title">Top Students</p>
+          <p>#1 text</p>
+          <p>#2 text</p>
+          <p>#3 text</p>
+        </div>
+        <div class="footer">
+          <p class="tag">Based on Number of Likes</p>
+          <button type="button" class="action">View More...</button>
+        </div>
+
+    </div>
     <!-- 
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
