@@ -29,7 +29,9 @@ onAuthStateChanged(auth, function (user) {
     document.getElementById("menu_loginregister").style.display = "none";
 
     const profileLink = document.getElementById("menu_profile");
-    profileLink.innerHTML = `<a href="user_profile.html" id="menu_profile"><i class="fa-solid fa-user"></i> ${user.displayName}'s Profile</a>`;
+    profileLink.innerHTML = `
+      <i class="fa-solid fa-user"></i>
+        ${user.displayName}'s Profile`;
 
     console.log(user.displayName + "is logged in!");
   } else {
