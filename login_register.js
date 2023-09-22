@@ -8,6 +8,12 @@ import {
   browserSessionPersistence,
 } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
 
+import {
+  getDatabase,
+  ref,
+  set,
+} from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+
 const firebaseConfig = {
   apiKey: "AIzaSyD-9GldTb1_2O8tDVerCUMa3IQJMfcH9XE",
   authDomain: "smart-student-projects.firebaseapp.com",
@@ -21,6 +27,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider(app);
+const db = getDatabase();
 
 login.addEventListener("click", (e) => {
   signInWithPopup(auth, provider)
@@ -28,8 +35,23 @@ login.addEventListener("click", (e) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
-      window.location.href = "home.html";
+
       alert("Welcome" + user.displayName);
+      window.location.href = "home.html";
+
+      const userRef = ref(db, "student/" + user.uid);
+      console.log("User Reference:", userRef.toString());
+
+      set(userRef, {
+        name: user.displayName,
+        email: user.email,
+      })
+        .then(() => {
+          console.log("Data write successful");
+        })
+        .catch((error) => {
+          console.error("Error writing data:", error);
+        });
     })
     .catch((error) => {
       const errorCode = error.code;

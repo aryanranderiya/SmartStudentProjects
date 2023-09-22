@@ -8,10 +8,14 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <link rel="stylesheet" href="project_submission.css" />
+    <link rel="stylesheet" type="text/css" href="project_submission.css" />
     <link rel="stylesheet" type="text/css" href="navbar.css" />
+    <link rel="stylesheet" type="text/css" href="input.css" />
     <link rel="stylesheet" type="text/css" href="button_green.css" />
+
     <script type="module" src="navbar.js"></script>
+    <script src="project_submission.js"></script>
+
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
@@ -115,10 +119,11 @@
             <div class="container" style="width: fit-content">
               <h2 style="color: #fff">
                 <b
-                  >Let's bring Innovation<br />Tell us about your<br />project</b
+                  >Let's bring Innovation to Universities around the Country!<br />Tell
+                  us about your project</b
                 >
               </h2>
-              <p style="color: #05696b">
+              <p style="color: #00bbff">
                 Innovation's the name, collabarations the game,<br />
                 Together we all change the world,<br />
                 it's never the same
@@ -129,21 +134,42 @@
             <div class="container" id="inputControl">
               <h3 style="color: #fff">
                 <b>Upload Your Innovation</b>
-                <i class="bx bxs-rocket bx-tada"></i>
+                <i class="bx bxs-rocket bx-tada"></i><br />
               </h3>
               <form>
                 <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label for="id">Project ID</label>
+                  <div class="input-group">
                     <input
+                      required=""
                       type="text"
-                      class="form-control"
-                      name="id"
-                      id="id"
-                      required
-                      readonly
+                      name="text"
+                      autocomplete="off"
+                      class="input"
                     />
+                    <label class="user-label">Project Title</label>
                   </div>
+
+                  <!-- 
+                  <div class="input-group">
+                    <select required id="type" name="type" class="input">
+                      <option value="" disabled selected hidden></option>
+                      <option value="Hardware">Hardware</option>
+                      <option value="Software">Software</option>
+                    </select>
+                    <label class="user-label">Project Type</label>
+                  </div> -->
+
+                  <!-- <div class="input-group">
+                    <div class="custom-select">
+                      <a href="#" class="select-option">Select Project Type</a>
+                      <div class="options">
+                        <a href="#" data-value="Hardware">Hardware</a>
+                        <a href="#" data-value="Software">Software</a>
+                      </div>
+                    </div>
+                    <label class="user-label">Project Type</label>
+                  </div> -->
+
                   <div class="form-group col-md-6">
                     <label for="type">Project Type</label>
                     <select class="form-control" id="type">
@@ -152,32 +178,27 @@
                     </select>
                   </div>
                 </div>
+
                 <div class="form-row">
                   <div class="form-group col-md-6">
-                    <label for="city">Project Title</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="title"
-                      id="city"
-                      placeholder="Title"
-                      required
-                    />
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="phone_no">Upload video or photo</label>
+                    <label for="file_upload">Upload video or photo</label>
                     <div class="custom-file">
                       <input
                         type="file"
                         class="custom-file-input"
                         id="customFile"
+                        onchange="updateFileName(this)"
                       />
-                      <label class="custom-file-label" for="customFile"
+                      <label
+                        class="custom-file-label"
+                        for="customFile"
+                        id="fileLabel"
                         >Choose file</label
                       >
                     </div>
                   </div>
                 </div>
+
                 <div class="form-group">
                   <label for="query">Description</label>
                   <textarea
