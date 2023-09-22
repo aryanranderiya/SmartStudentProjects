@@ -27,6 +27,7 @@ onAuthStateChanged(auth, function (user) {
     document.getElementById("menu_logout").style.display = "block";
     document.getElementById("menu_profile").style.display = "block";
     document.getElementById("menu_loginregister").style.display = "none";
+    document.getElementById("menu_submit_project").style.display = "block";
 
     const profileLink = document.getElementById("menu_profile");
     profileLink.innerHTML = `
@@ -37,6 +38,7 @@ onAuthStateChanged(auth, function (user) {
   } else {
     document.getElementById("menu_logout").style.display = "none";
     document.getElementById("menu_profile").style.display = "none";
+    document.getElementById("menu_submit_project").style.display = "none";
     document.getElementById("menu_loginregister").style.display = "block";
   }
 });
