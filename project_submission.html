@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="button_green.css" />
 
     <script type="module" src="navbar.js"></script>
-    <script src="project_submission.js"></script>
+    <script type="module" src="project_submission.js"></script>
 
     <link
       rel="stylesheet"
@@ -136,10 +136,11 @@
                 <b>Upload Your Innovation</b>
                 <i class="bx bxs-rocket bx-tada"></i><br />
               </h3>
-              <form>
+              <form id="upload-form">
                 <div class="form-row">
                   <div class="input-group">
                     <input
+                      id="projectTitle"
                       required=""
                       type="text"
                       name="text"
@@ -172,7 +173,7 @@
 
                   <div class="form-group col-md-6">
                     <label for="type">Project Type</label>
-                    <select class="form-control" id="type">
+                    <select class="form-control" id="projectType" required>
                       <option value="Hardware">Hardware</option>
                       <option value="Software">Software</option>
                     </select>
@@ -188,6 +189,7 @@
                         class="custom-file-input"
                         id="customFile"
                         onchange="updateFileName(this)"
+                        required
                       />
                       <label
                         class="custom-file-label"
@@ -203,26 +205,21 @@
                   <label for="query">Description</label>
                   <textarea
                     class="form-control"
-                    id="query"
+                    id="projectDescription"
                     rows="5"
                     name="user_query"
                     placeholder="Enter project Description here..."
+                    required
                   ></textarea>
                 </div>
                 <button
                   style="background-color: #00bbff"
                   type="submit"
                   class="btn btn-primary"
+                  id="submit"
                 >
                   upload
                 </button>
-                <input
-                  type="hidden"
-                  name="_autoresponse"
-                  value="thank you for visiting my portfolio site. i have received your query and i will try to solve that and contact you as soon as possible"
-                />
-
-                <input type="hidden" name="_template" value="table" />
               </form>
             </div>
           </div>
@@ -251,4 +248,14 @@
     src="https://kit.fontawesome.com/3d65243769.js"
     crossorigin="anonymous"
   ></script>
+  <script>
+    function updateFileName(inputElement) {
+      const fileName = inputElement.value.split("\\").pop();
+
+      const fileLabel = document.getElementById("fileLabel");
+      if (fileLabel) {
+        fileLabel.textContent = fileName;
+      }
+    }
+  </script>
 </html>
