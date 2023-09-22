@@ -1,0 +1,218 @@
+@font-face {
+  font-family: "CustomHelvetica";
+  src: url(Helvetica.ttf);
+}
+
+* {
+  font-family: "CustomHelvetica", Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-image: linear-gradient(120deg, #121212 0%, #424242 100%);
+}
+
+#title {
+  margin-left: 2em;
+  margin-right: 29em;
+  pointer-events: none;
+  color: #fff;
+}
+label{
+  color: #fff;
+}
+.navbar {
+  width: 100%;
+  overflow: auto;
+
+  background: rgba(255, 255, 255, 0.171);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15.2px);
+  -webkit-backdrop-filter: blur(15.2px);
+  border: 1px solid rgba(255, 255, 255, 0.23);
+  /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
+  /* border: 1px solid rgba(255, 255, 255, 0.23); */
+}
+
+.navbar a {
+  float: left;
+  text-align: center;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background: rgba(0, 0, 0, 0);
+  border-radius: 16px;
+  backdrop-filter: blur(15.2px);
+  -webkit-backdrop-filter: blur(15.2px);
+  color: #00bbff;
+}
+
+.active {
+  background: #00bbff;
+  border-radius: 16px;
+  backdrop-filter: blur(15.2px);
+  -webkit-backdrop-filter: blur(15.2px);
+}
+
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+}
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+input {
+  font-size: 15px;
+  text-indent: 15px;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00bbff;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 20px 0 0 20px;
+  outline: none;
+  color: #9dbfaf;
+}
+
+.searchTerm:focus {
+  color: #000000;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00bbff;
+  background: #00bbff;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 20px 20px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap {
+  width: 40%;
+  position: absolute;
+  top: 23%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* CARDS */
+.card-container {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 65%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 900px;
+  /* max-width: 1300px; */
+  /* margin: 0 auto; */
+}
+
+.card .header img.cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 0.75rem;
+  background-color: #ffffff;
+  width: 300px;
+  height: 370px;
+  margin: 20px;
+  flex: 1;
+  max-width: calc(50% - 20px);
+  box-sizing: border-box;
+
+  background: rgba(255, 255, 255, 0.171);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15.2px);
+  -webkit-backdrop-filter: blur(15.2px);
+  border: 1px solid rgba(255, 255, 255, 0.23);
+}
+
+.header {
+  position: relative;
+  background-clip: border-box;
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  border-radius: 0.75rem;
+  background-color: rgb(33 150 243);
+  height: 14rem;
+}
+
+.info {
+  border: none;
+  padding: 1.5rem;
+  text-align: center;
+  color: #ffffff;
+}
+
+.title {
+  color: rgb(255, 255, 255);
+  letter-spacing: 0;
+  line-height: 1.375;
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer {
+  padding: 0.75rem;
+  margin-top: -10px;
+  border: 1px solid rgba(255, 255, 255, 0.23);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(0, 140, 255, 0.082);
+}
+
+.tag {
+  font-weight: 300;
+  font-size: 0.75rem;
+  display: block;
+  color: white;
+}
+
+.action {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  border: none;
+  outline: none;
+  color: rgb(255 255 255);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  background-color: rgb(33 150 243);
+  border-radius: 0.5rem;
+}

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="project_submission.css" />
+    <script
+      src="https://kit.fontawesome.com/3d65243769.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link href="aboutStyle.css" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="boxicons.min.css" />
+    <link rel="stylesheet" type="text/css" href="navbar.css" />
+    <link rel="stylesheet" type="text/css" href="button_green.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+    />
+
+    <title>Smart Student Projects</title>
+  </head>
+  <header>
+    <div class="navbar">
+      <div class="navbar-section" id="title-section">
+        <a id="title">Smart Student Projects</a>
+      </div>
+
+      <div class="navbar-section" id="pages-section">
+        <a href="home.html">
+          <button class="button_nav" style="font-size: 13px" id="active">
+            <i class="fa-solid fa-house"></i>
+            Home
+          </button></a
+        >
+        <a href="about.html">
+          <button class="button_nav" style="font-size: 13px">
+            <i class="fa-solid fa-address-card"></i>
+            About
+          </button></a
+        >
+        <a href="ranking.html">
+          <button class="button_nav" style="font-size: 13px">
+            <i class="fa-solid fa-ranking-star"></i>
+            Ranking
+          </button></a
+        >
+
+        <a href="projects.html">
+          <button class="button_nav" style="font-size: 13px">
+            <i class="fa-solid fa-lightbulb"></i>
+            Projects
+          </button></a
+        >
+      </div>
+
+      <div class="navbar-section" id="login-profile-section">
+        <a href="project_submission.html">
+          <button
+            class="button_green"
+            style="
+              font-size: 13px;
+              margin-bottom: 10px;
+              margin-top: 10px;
+              margin-right: 10px;
+            "
+          >
+            Upload
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </a>
+
+        <a href="login_register.html" id="menu_loginregister">
+          <button class="button_nav" style="font-size: 13px">
+            <i class="fa-solid fa-right-to-bracket"></i>
+            Login/Register
+          </button></a
+        >
+        <a href="user_profile.html">
+          <button class="button_nav" style="font-size: 13px" id="menu_profile">
+            <i class="fa-solid fa-user"></i>
+            Profile
+          </button></a
+        >
+
+        <a href="#"
+          ><button class="button_nav" id="menu_logout" style="background: red">
+            <i
+              class="fa-solid fa-right-from-bracket fa-lg"
+              style="color: #fff"
+            ></i></button
+        ></a>
+      </div>
+    </div>
+  </header>
+
+  <body>
+    <div id="content">
+      <div class="container">
+        <br /><br />
+        <div class="row row align-items-center">
+          <div class="col-sm">
+            <div class="container" style="width: fit-content">
+              <h2 style="color: #fff">
+                <b
+                  >Let's bring Innovation<br />Tell us about your<br />project</b
+                >
+              </h2>
+              <p style="color: #05696b">
+                Innovation's the name, collabarations the game,<br />
+                Together we all change the world,<br />
+                it's never the same
+              </p>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="container" id="inputControl">
+              <h3 style="color: #fff">
+                <b>Upload Your Innovation</b>
+                <i class="bx bxs-rocket bx-tada"></i>
+              </h3>
+              <form>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="id">Project ID</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="id"
+                      id="id"
+                      required
+                      readonly
+                    />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="type">Project Type</label>
+                    <select class="form-control" id="type">
+                      <option value="Hardware">Hardware</option>
+                      <option value="Software">Software</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="city">Project Title</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="title"
+                      id="city"
+                      placeholder="Title"
+                      required
+                    />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="phone_no">Upload video or photo</label>
+                    <div class="custom-file">
+                      <input
+                        type="file"
+                        class="custom-file-input"
+                        id="customFile"
+                      />
+                      <label class="custom-file-label" for="customFile"
+                        >Choose file</label
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="query">Description</label>
+                  <textarea
+                    class="form-control"
+                    id="query"
+                    rows="5"
+                    name="user_query"
+                    placeholder="Enter project Description here..."
+                  ></textarea>
+                </div>
+                <button
+                  style="background-color: #00bbff"
+                  type="submit"
+                  class="btn btn-primary"
+                >
+                  upload
+                </button>
+                <input
+                  type="hidden"
+                  name="_autoresponse"
+                  value="thank you for visiting my portfolio site. i have received your query and i will try to solve that and contact you as soon as possible"
+                />
+
+                <input type="hidden" name="_template" value="table" />
+              </form>
+            </div>
+          </div>
+        </div>
+        <br /><br />
+      </div>
+    </div>
+    <div id="searchResults"></div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="contactJS.js"></script>
+    <script
+      src="/docs/5.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
