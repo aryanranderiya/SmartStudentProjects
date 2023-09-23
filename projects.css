@@ -1,0 +1,57 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.pcontainer {
+  max-width: 100%;
+  /display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 5% 5% 9%;
+}
+
+#project-card {
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.171);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15.2px);
+  -webkit-backdrop-filter: blur(15.2px);
+  border: 1px solid rgba(255, 255, 255, 0.23);
+}
+
+* {
+  color: white;
+}
+
+.card p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.card {
+  width: calc(25% - 20px);
+  margin: 10px;
+  padding: 20px;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.card a {
+  color: #00bbff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}

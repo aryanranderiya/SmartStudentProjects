@@ -21,27 +21,30 @@ const database = getDatabase(app);
 document.addEventListener("DOMContentLoaded", function () {
   const container = document.getElementById("projectContainer");
 
-  const projectsRef = ref(database, "projects");
+  const projectsRef = ref(database, "Projects/");
 
   onValue(projectsRef, (snapshot) => {
     const data = snapshot.val();
 
     if (data !== null) {
       for (const projectId in data) {
-        console.log(projectId);
-        if (Object.hasOwnProperty.call(data, projectId)) {
-          const projectData = data[projectId];
+        const projectData = data[projectId];
 
+        if (projectData && projectData.p_name) {
           const card = document.createElement("div");
           card.classList.add("card");
+          card.id = `project-card`;
 
           card.innerHTML = `
-            <h2>${projectData.name}</h2>
-            <p>Total Likes: ${projectData.total_likes}</p>
-            <a href="${projectData.project_url}" target="_blank">Project URL</a>
-          `;
+          <h2>${projectData.p_name}</h2>
+          <p>
+          Description: ${projectData.p_description}<br>
+          Type: ${projectData.p_type}<br>
+          User ID: ${projectData.p_user_id}<br>
+          <i class="fa-solid fa-thumbs-up fa-xl"></i> Likes: ${projectData.p_likes}<br>
+          <a href="${projectData.file_storage_reference}" target="_blank">View File</a></p>
+        `;
 
-          console.log(projectData);
           container.appendChild(card);
         }
       }
