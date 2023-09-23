@@ -34,7 +34,7 @@ onAuthStateChanged(auth, function (user) {
       <i class="fa-solid fa-user"></i>
         ${user.displayName}'s Profile`;
 
-    console.log(user.displayName + " is logged in!");
+    console.log(user.displayName + "is logged in!");
   } else {
     document.getElementById("menu_logout").style.display = "none";
     document.getElementById("menu_profile").style.display = "none";

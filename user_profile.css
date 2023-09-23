@@ -10,7 +10,9 @@ body {
 
 h5,
 h4,
-* {
+p,
+h2,
+h3 {
   color: white;
 }
 

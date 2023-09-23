@@ -7,6 +7,14 @@
     <link rel="stylesheet" type="text/css" href="user_profile.css" />
     <link rel="stylesheet" type="text/css" href="modal.css" />
 
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="navbar.css" />
+    <script type="module" src="navbar.js"></script>
+    <script
+      src="https://kit.fontawesome.com/3d65243769.js"
+      crossorigin="anonymous"
+    ></script>
+
     <script src="bootstrap/js/bootstrap.js"></script>
     <script type="module" src="user_profile.js"></script>
 
@@ -18,150 +26,259 @@
     <title>User Profile</title>
   </head>
   <body>
-    <section>
-      <div class="container py-5">
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="card mb-4" id="card_id">
-              <div class="card-body text-center">
-                <img
-                  id="user_image"
-                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-                  alt="avatar"
-                  class="rounded-circle img-fluid"
-                  style="width: 100px"
-                />
-                <h5 class="my-3" id="user_name">Name</h5>
-                <p id="user_email">E-Mail</p>
-                <br />
-                <div class="d-flex justify-content-center mb-2">
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    id="editprofile"
-                  >
-                    Edit Profile
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="card mb-4 mb-lg-0" id="card_id">
-              <div class="card-body text-center">
-                <ul class="list-group list-group-flush rounded-3">
-                  <h4 class="justify-content-between p-3">Contact Here:</h4>
-                  <li
-                    class="d-flex justify-content-between align-items-center p-3"
-                  >
-                    <i class="fa-solid fa-envelope" style="color: #030303"></i>
-                    <p class="mb-0" id="contact_email">UserEmail</p>
-                  </li>
-                  <li
-                    class="d-flex justify-content-between align-items-center p-3"
-                  >
-                    <i class="fab fa-linkedin fa-lg" style="color: #0072b1"></i>
-                    <p class="mb-0" id="user_linkedin">UserLinkedin</p>
-                  </li>
-                  <li
-                    class="d-flex justify-content-between align-items-center p-3"
-                  >
-                    <i class="fab fa-github fa-lg" style="color: #333333"></i>
-                    <p class="mb-0" id="user_github">UserGithub</p>
-                  </li>
-                  <li
-                    class="d-flex justify-content-between align-items-center p-3"
-                  >
-                    <i class="fab fa-twitter fa-lg" style="color: #55acee"></i>
-                    <p class="mb-0" id="user_twitter">UserTwitter</p>
-                  </li>
-                </ul>
+    <header>
+      <div class="navbar">
+        <div class="navbar-section" id="title-section">
+          <a id="title">
+            <img src="logo2.png" height="50px" /> Smart Student Projects</a
+          >
+        </div>
+
+        <div class="navbar-section" id="pages-section">
+          <a href="home.html">
+            <button class="button_nav" style="font-size: 13px">
+              <i class="fa-solid fa-house"></i>
+              Home
+            </button></a
+          >
+          <a href="about.html">
+            <button class="button_nav" style="font-size: 13px">
+              <i class="fa-solid fa-address-card"></i>
+              About
+            </button></a
+          >
+          <a href="ranking.html">
+            <button class="button_nav" style="font-size: 13px">
+              <i class="fa-solid fa-ranking-star"></i>
+              Ranking
+            </button></a
+          >
+
+          <a href="projects.html">
+            <button class="button_nav" style="font-size: 13px">
+              <i class="fa-solid fa-lightbulb"></i>
+              Projects
+            </button></a
+          >
+        </div>
+
+        <div class="navbar-section" id="login-profile-section">
+          <a href="project_submission.html" id="menu_submit_project">
+            <button
+              class="button_green"
+              style="
+                font-size: 13px;
+                margin-bottom: 10px;
+                margin-top: 10px;
+                margin-right: 10px;
+              "
+            >
+              Upload
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </a>
+
+          <a href="login_register.html" id="menu_loginregister">
+            <button class="button_nav" style="font-size: 13px">
+              <i class="fa-solid fa-right-to-bracket"></i>
+              Login/Register
+            </button></a
+          >
+          <a href="user_profile.html">
+            <button
+              class="button_nav"
+              style="font-size: 13px"
+              id="menu_profile"
+            >
+              <i class="fa-solid fa-user"></i>
+              Profile
+            </button></a
+          >
+
+          <a href="#"
+            ><button
+              class="button_nav"
+              id="menu_logout"
+              style="background: red"
+            >
+              <i
+                class="fa-solid fa-right-from-bracket fa-lg"
+                style="color: #fff"
+              ></i></button
+          ></a>
+        </div>
+      </div>
+    </header>
+
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card mb-4" id="card_id">
+            <div class="card-body text-center">
+              <img
+                id="user_image"
+                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                alt="avatar"
+                class="rounded-circle img-fluid"
+                style="width: 100px"
+              />
+              <h5 class="my-3" id="user_name">Name</h5>
+              <p id="user_email">E-Mail</p>
+              <br />
+              <div class="d-flex justify-content-center mb-2">
+                <button type="button" class="btn btn-primary" id="editprofile">
+                  Edit Profile
+                </button>
               </div>
             </div>
           </div>
-          <div class="col-lg-8">
-            <div class="card mb-4" id="card_id">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-sm-3">
-                    <p class="mb-0"><b>Full Name</b></p>
-                  </div>
-                  <div class="col-sm-9">
-                    <p id="user_name2">Name</p>
-                  </div>
-                </div>
-                <hr />
-                <div class="row">
-                  <div class="col-sm-3">
-                    <p class="mb-0"><b>Email</b></p>
-                  </div>
-                  <div class="col-sm-9">
-                    <p id="user_email2">example@example.com</p>
-                  </div>
-                </div>
-              </div>
+          <div class="card mb-4 mb-lg-0" id="card_id">
+            <div class="card-body text-center">
+              <ul class="list-group list-group-flush rounded-3">
+                <h4 class="justify-content-between p-3">Contact Here:</h4>
+                <li
+                  class="d-flex justify-content-between align-items-center p-3"
+                >
+                  <i class="fa-solid fa-envelope" style="color: #030303"></i>
+                  <p class="mb-0" id="contact_email">UserEmail</p>
+                </li>
+                <li
+                  class="d-flex justify-content-between align-items-center p-3"
+                >
+                  <i class="fab fa-linkedin fa-lg" style="color: #0072b1"></i>
+                  <p class="mb-0" id="user_linkedin">UserLinkedin</p>
+                </li>
+                <li
+                  class="d-flex justify-content-between align-items-center p-3"
+                >
+                  <i class="fab fa-github fa-lg" style="color: #333333"></i>
+                  <p class="mb-0" id="user_github">UserGithub</p>
+                </li>
+                <li
+                  class="d-flex justify-content-between align-items-center p-3"
+                >
+                  <i class="fab fa-twitter fa-lg" style="color: #55acee"></i>
+                  <p class="mb-0" id="user_twitter">UserTwitter</p>
+                </li>
+              </ul>
             </div>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="card mb-4 mb-md-0" id="card_id">
-                  <div class="card-body">
-                    <h4 style="margin-bottom: 20px">Projects</h4>
-                    <p class="mb-1" style="font-size: 0.77rem">Web Design</p>
-                    <div class="progress rounded" style="height: 5px">
-                      <div
-                        class="progress-bar"
-                        role="progressbar"
-                        style="width: 80%"
-                        aria-valuenow="80"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          </div>
+        </div>
 
-            <div class="container">
+        <div class="col-lg-8">
+          <div class="card mb-4" id="card_id">
+            <div class="card-body">
               <div class="row">
-                <form class="col-md-4">
-                  <input
-                    type="text"
-                    id="universitySelect"
-                    class="form-control"
-                    placeholder="Search for a university"
-                  />
-                </form>
+                <div class="col-sm-3">
+                  <p class="mb-0"><b>Full Name</b></p>
+                </div>
+                <div class="col-sm-9">
+                  <p id="user_name2">Name</p>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0"><b>Email</b></p>
+                </div>
+                <div class="col-sm-9">
+                  <p id="user_email2">example@example.com</p>
+                </div>
               </div>
             </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card mb-4 mb-md-0" id="card_id">
+                <div class="card-body">
+                  <h4 style="margin-bottom: 20px">Projects</h4>
+                  <p class="mb-1" style="font-size: 0.77rem">Web Design</p>
+                  <div class="progress rounded" style="height: 5px">
+                    <div
+                      class="progress-bar"
+                      role="progressbar"
+                      style="width: 80%"
+                      aria-valuenow="80"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="margin-top: 20px">
+            <div class="col-md-12">
+              <div class="card mb-4 mb-md-0" id="card_id">
+                <div class="card-body">
+                  <h3>Are you Hiring?</h3>
+                  <h4>
+                    Are you a company or organisation looking to hire fresh new
+                    talent??
+                  </h4>
+                  <h5>
+                    Feel free to contact the student from their contact details!
+                  </h5>
+                  <br />
+                  <i
+                    class="fa-solid fa-circle-left fa-2xl"
+                    style="color: #ffffff"
+                  ></i>
+                  <img
+                    src="company.png"
+                    height="300px"
+                    style="float: right; margin-left: 20px"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="container">
+            <form>
+              <input
+                type="text"
+                id="universitySelect"
+                class="form-control"
+                placeholder="Search for a university"
+              />
+            </form>
           </div>
         </div>
       </div>
-    </section>
 
-    <div id="myModal" class="modal" style="display: none">
-      <div class="modal-content">
-        <span class="close" id="closeButton">&times;</span>
-        <span><h2 style="color: black">Edit Profile</h2></span>
+      <div id="myModal" class="modal" style="display: none">
+        <div class="modal-content">
+          <span class="close" id="closeButton">&times;</span>
+          <span><h2 style="color: black">Edit Profile</h2></span>
 
-        <div class="social-input">
-          <i class="fab fa-linkedin fa-2xl" style="color: #0072b1"></i>
-          <input type="text" id="edit_linkedin" placeholder="Enter LinkedIn" />
+          <div class="social-input">
+            <i class="fab fa-linkedin fa-2xl" style="color: #0072b1"></i>
+            <input
+              type="text"
+              id="edit_linkedin"
+              placeholder="Enter LinkedIn"
+            />
+          </div>
+
+          <div class="social-input">
+            <i class="fab fa-github fa-2xl" style="color: #333333"></i>
+            <input type="text" id="edit_github" placeholder="Enter Github" />
+          </div>
+
+          <div class="social-input">
+            <i class="fab fa-twitter fa-2xl" style="color: #55acee"></i>
+            <input type="text" id="edit_twitter" placeholder="Enter Twitter" />
+          </div>
+
+          <p>
+            <br />
+            <button id="edit_profile_submit">Save Changes</button>
+            <button id="btn_close">Cancel</button>
+          </p>
         </div>
-
-        <div class="social-input">
-          <i class="fab fa-github fa-2xl" style="color: #333333"></i>
-          <input type="text" id="edit_github" placeholder="Enter Github" />
-        </div>
-
-        <div class="social-input">
-          <i class="fab fa-twitter fa-2xl" style="color: #55acee"></i>
-          <input type="text" id="edit_twitter" placeholder="Enter Twitter" />
-        </div>
-
-        <p>
-          <br />
-          <button id="edit_profile_submit">Save Changes</button>
-          <button id="btn_close">Cancel</button>
-        </p>
       </div>
     </div>
   </body>
