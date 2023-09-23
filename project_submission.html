@@ -80,6 +80,7 @@
               margin-top: 10px;
               margin-right: 10px;
             "
+            id="menu_submit_project"
           >
             Upload
             <i class="fa-solid fa-plus"></i>
@@ -218,19 +219,22 @@
                     id="projectDescription"
                     class="input"
                     rows="5"
+                    type="text"
                     name="user_query"
-                    required
+                    placeholder=""
+                    required=""
                   ></textarea>
                   <label class="user-label">Project Description</label>
                 </div>
 
+                <!-- 
                 <div class="checkplagiarism">
                   <a href="projects.html">
                     <button class="button_nav" style="font-size: 13px">
                       Plagiarism Check
                       <i class="fa-solid fa-check-to-slot"></i></button
                   ></a>
-                </div>
+                </div> -->
 
                 <a href="project_submission.html">
                   <button
@@ -252,7 +256,7 @@
 
               <div id="myModal" class="modal">
                 <div class="modal-content">
-                  <span class="close">&times;</span>
+                  <span class="close" id="closeButton">&times;</span>
                   <p>
                     <b>Do you have a Hardware Project? </b><br />
                     Please only upload screenshots, recordings or documents.

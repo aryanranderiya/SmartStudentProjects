@@ -29,65 +29,67 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth(app);
 const storage = getStorage();
-const fileInput = document.getElementById("customFile");
 
-const fileListContainer = document.getElementById("fileListContainer");
+function uploadFolderContents(folder, uid, project_id) {
+  const folderName = folder.name;
+  const folderRef = ref(
+    database,
+    "Projects/" + project_id + "/Folders/" + folderName
+  );
 
-fileInput.addEventListener("change", function () {
-  if (fileInput.files.length > 0) {
-    fileListContainer.style.display = "block";
-  } else {
-    fileListContainer.style.display = "none";
-  }
-});
+  // Upload the folder name to the database
+  set(folderRef, {
+    folder_name: folderName,
+    p_user_id: uid,
+  }).then(() => {
+    console.log("Folder name uploaded: " + folderName);
+  });
 
-function updateFileInputAccept() {
-  const projectTypeSelect = document.getElementById("projectType");
-  const customFileInput = document.getElementById("customFile");
+  // Iterate through the folder's contents (files and subfolders)
+  const entries = folder.webkitGetAsEntry().createReader();
+  entries.readEntries(function (folderContents) {
+    for (let j = 0; j < folderContents.length; j++) {
+      const entry = folderContents[j];
+      if (entry.isFile) {
+        // Upload individual files
+        const selectedFile = entry.file();
+        const fileName = Date.now() + "_" + entry.name;
+        const fileRef = storageRef(
+          storage,
+          "Projects/" + project_id + "/" + folderName + "/" + fileName
+        );
 
-  const selectedProjectType = projectTypeSelect.value;
+        uploadBytes(fileRef, selectedFile)
+          .then((snapshot) => getDownloadURL(snapshot.ref))
+          .then(function (downloadURL) {
+            var fileEntryRef = ref(
+              database,
+              "Projects/" +
+                project_id +
+                "/Folders/" +
+                folderName +
+                "/files/" +
+                fileName
+            );
 
-  let acceptedTypes = "";
-
-  if (selectedProjectType === "Hardware") {
-    acceptedTypes = "image/*,video/*,pdf/";
-  } else if (selectedProjectType === "Software") {
-    acceptedTypes = "*/*";
-  }
-
-  customFileInput.setAttribute("accept", acceptedTypes);
-}
-
-function updateFileList(inputElement) {
-  const fileList = document.getElementById("fileList");
-  fileList.innerHTML = "";
-
-  const files = inputElement.files;
-  for (let i = 0; i < files.length; i++) {
-    const file = files[i];
-
-    if (file.isDirectory) {
-      const listItem = document.createElement("li");
-      listItem.textContent = `Folder: ${file.name}`;
-      fileList.appendChild(listItem);
-
-      const folderFiles = file.webkitGetAsEntry().createReader();
-      folderFiles.readEntries(function (entries) {
-        for (let j = 0; j < entries.length; j++) {
-          const entry = entries[j];
-          if (entry.isFile) {
-            const subListItem = document.createElement("li");
-            subListItem.textContent = `File: ${entry.name}`;
-            fileList.appendChild(subListItem);
-          }
-        }
-      });
-    } else if (file.isFile) {
-      const listItem = document.createElement("li");
-      listItem.textContent = `File: ${file.name}`;
-      fileList.appendChild(listItem);
+            set(fileEntryRef, {
+              file_name: fileName,
+              file_storage_reference: downloadURL,
+              p_user_id: uid,
+            }).then(() => {
+              console.log("File uploaded: " + fileName);
+            });
+          })
+          .catch(function (error) {
+            console.error("Error uploading file to Firebase Storage:", error);
+            alert("Error uploading file. Please try again.");
+          });
+      } else if (entry.isDirectory) {
+        // Recursively upload contents of subfolders
+        uploadFolderContents(entry, uid, project_id);
+      }
     }
-  }
+  });
 }
 
 function uploadDataToDatabaseAndStorage(
@@ -97,53 +99,39 @@ function uploadDataToDatabaseAndStorage(
   uid
 ) {
   var fileInput = document.getElementById("customFile");
-  var selectedFile = fileInput.files[0];
-  var fileName = Date.now() + "_" + selectedFile.name;
-  var fileRef = storageRef(storage, "Projects/" + fileName);
+  var selectedFiles = fileInput.files;
+  var project_id = "project_" + uid + "_" + Date.now();
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
       uid = user.uid;
-      var project_id =
-        "project_" +
-        user.displayName +
-        "_" +
-        Math.random().toString(16).slice(5);
+      uploadFolderContents(selectedFiles[0], uid, project_id);
 
-      uploadBytes(fileRef, selectedFile)
-        .then((snapshot) => getDownloadURL(snapshot.ref))
-        .then(function (downloadURL) {
-          var projectsRef = ref(database, "Projects/" + project_id);
+      var projectRef = ref(database, "Projects/" + project_id);
 
-          set(projectsRef, {
-            p_id: project_id,
-            p_name: projectName,
-            p_description: projectDescription,
-            p_type: projectType,
-            p_storage_reference: downloadURL,
-            p_user_id: uid,
-          }).then(() => {
-            console.log("downloadurl: " + downloadURL);
-          });
+      set(projectRef, {
+        p_id: project_id,
+        p_name: projectName,
+        p_description: projectDescription,
+        p_type: projectType,
+        p_user_id: uid,
+      }).then(() => {
+        console.log("Project details uploaded");
+      });
 
-          var userProjectsRef = ref(
-            database,
-            "student/" + uid + "/projects/" + project_id
-          );
+      var userProjectsRef = ref(
+        database,
+        "student/" + uid + "/projects/" + project_id
+      );
 
-          set(userProjectsRef, {
-            project_url: downloadURL,
-          }).then(() => {
-            console.log("downloadurl: " + downloadURL);
-          });
+      set(userProjectsRef, {
+        project_url: project_id,
+      }).then(() => {
+        console.log("User project uploaded");
+      });
 
-          alert("Data and file uploaded successfully!");
-          document.getElementById("upload-form").reset();
-        })
-        .catch(function (error) {
-          console.error("Error uploading file to Firebase Storage:", error);
-          alert("Error uploading file. Please try again.");
-        });
+      alert("Data and files uploaded successfully!");
+      document.getElementById("upload-form").reset();
     }
   });
 }
@@ -167,8 +155,8 @@ document.addEventListener("DOMContentLoaded", function () {
       );
     });
 });
+
 const modal = document.getElementById("myModal");
-const closeButton = document.querySelector(".close");
 
 function openModal() {
   modal.style.display = "block";
@@ -181,6 +169,7 @@ function closeModal() {
 const helpLink = document.getElementById("helpLink");
 helpLink.addEventListener("click", openModal);
 
+const closeButton = document.getElementById("closeButton");
 closeButton.addEventListener("click", closeModal);
 
 window.addEventListener("click", (event) => {
@@ -188,3 +177,47 @@ window.addEventListener("click", (event) => {
     closeModal();
   }
 });
+
+const fileInput = document.getElementById("customFile");
+
+const fileListContainer = document.getElementById("fileListContainer");
+
+fileInput.addEventListener("change", function () {
+  if (fileInput.files.length > 0) {
+    fileListContainer.style.display = "block";
+  } else {
+    fileListContainer.style.display = "none";
+  }
+});
+
+function updateFileInputAccept() {
+  const projectTypeSelect = document.getElementById("projectType");
+  const customFileInput = document.getElementById("customFile");
+
+  const selectedProjectType = projectTypeSelect.value;
+
+  let acceptedTypes = "";
+
+  if (selectedProjectType === "Hardware") {
+    acceptedTypes = "image/*,video/*,pdf/*";
+  } else if (selectedProjectType === "Software") {
+    acceptedTypes = "*/*";
+  }
+
+  customFileInput.setAttribute("accept", acceptedTypes);
+}
+
+function updateFileList(inputElement) {
+  const fileList = document.getElementById("fileList");
+  fileList.innerHTML = "";
+
+  const files = inputElement.files;
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i];
+    const listItem = document.createElement("li");
+    listItem.textContent = file.name;
+    fileList.appendChild(listItem);
+  }
+}
+
+updateFileInputAccept();
