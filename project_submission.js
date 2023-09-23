@@ -37,7 +37,6 @@ function uploadFolderContents(folder, uid, project_id) {
     "Projects/" + project_id + "/Folders/" + folderName
   );
 
-  // Upload the folder name to the database
   set(folderRef, {
     folder_name: folderName,
     p_user_id: uid,
