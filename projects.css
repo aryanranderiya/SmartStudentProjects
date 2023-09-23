@@ -6,7 +6,7 @@
 
 .pcontainer {
   max-width: 100%;
-  /display: flex;
+  display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 0 5% 5% 9%;
