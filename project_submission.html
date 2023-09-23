@@ -12,9 +12,9 @@
     <link rel="stylesheet" type="text/css" href="navbar.css" />
     <link rel="stylesheet" type="text/css" href="input.css" />
     <link rel="stylesheet" type="text/css" href="button_green.css" />
-    <script type="module" src="user_not_login.js"></script>
-    <script type="module" src="navbar.js"></script>
-    <script type="module" src="project_submission.js"></script>
+    <script type="module" src="user_not_login.js" async></script>
+    <script type="module" src="navbar.js" async></script>
+    <script type="module" src="project_submission.js" async></script>
 
     <link
       rel="stylesheet"
@@ -194,7 +194,6 @@
                         type="file"
                         class="custom-file-input"
                         id="customFile"
-                        onchange="updateFileList(this)"
                         required
                         multiple
                       />
@@ -263,8 +262,12 @@
                       ><br />
                       Do you have a Software Project?</b
                     ><br />
-                    Please only upload zip files.
-                    <br />Extension types accepted: .zip<br />
+                    You can upload single / multiple files. If you wish to
+                    upload folders within your project, please only upload zip
+                    files.
+                    <br />Extension types accepted: any / .zip<br />
+                    <br />
+                    <button id="btn_close">Okay</button>
                   </p>
                 </div>
               </div>
