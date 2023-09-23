@@ -7,8 +7,29 @@
   font-family: "CustomHelvetica", Arial, Helvetica, sans-serif;
 }
 
+.logo_info {
+  align-items: center;
+  justify-content: center;
+  width: 65%;
+  padding: 10px;
+  margin: 3% auto 0;
+
+  background: rgba(255, 255, 255, 0.171);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15.2px);
+  -webkit-backdrop-filter: blur(15.2px);
+  border: 1px solid rgba(255, 255, 255, 0.23);
+}
+
+#tagline {
+  font-style: italic;
+  font-size: 15px;
+}
+
 body {
   background-image: linear-gradient(120deg, #121212 0%, #424242 100%);
+  color: white;
 }
 
 @media screen and (max-width: 500px) {
@@ -21,6 +42,7 @@ body {
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 .search {
+  margin: 20px auto 15px;
   width: 100%;
   position: relative;
   display: flex;
@@ -65,24 +87,24 @@ input {
 
 /*Resize the wrap to see the search bar change!*/
 .wrap {
-  width: 40%;
-  position: absolute;
-  top: 23%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  padding: 20px;
+  box-sizing: border-box;
+  margin: 0 auto;
 }
 
 /* CARDS */
 .card-container {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  top: 65%;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
-  width: 900px;
+  width: 70%;
+  margin: 0 auto;
 }
 
 .card .header img.cover-image {
@@ -180,17 +202,6 @@ input {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
 }
-
-/* .footer {
-  padding: 0.75rem;
-  margin-top: -10px;
-  border: 1px solid rgba(255, 255, 255, 0.23);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: rgba(0, 140, 255, 0.082);
-} */
 
 .tag {
   font-weight: 300;
