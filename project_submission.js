@@ -107,3 +107,24 @@ document.addEventListener("DOMContentLoaded", function () {
       );
     });
 });
+const modal = document.getElementById("myModal");
+const closeButton = document.querySelector(".close");
+
+function openModal() {
+  modal.style.display = "block";
+}
+
+function closeModal() {
+  modal.style.display = "none";
+}
+
+const helpLink = document.getElementById("helpLink");
+helpLink.addEventListener("click", openModal);
+
+closeButton.addEventListener("click", closeModal);
+
+window.addEventListener("click", (event) => {
+  if (event.target === modal) {
+    closeModal();
+  }
+});
