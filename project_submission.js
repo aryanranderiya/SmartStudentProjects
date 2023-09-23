@@ -7,7 +7,7 @@ import {
   getStorage,
   ref as storageRef,
   uploadBytes,
-  getDownloadURL, // Import getDownloadURL function
+  getDownloadURL,
 } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-storage.js";
 import {
   getDatabase,
@@ -25,7 +25,6 @@ const firebaseConfig = {
   measurementId: "G-WY5EZLXTS8",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth(app);

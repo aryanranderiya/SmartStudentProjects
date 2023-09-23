@@ -168,7 +168,12 @@
 
                   <div class="form-group col-md-12">
                     <label for="type">Project Type</label>
-                    <select class="form-control" id="projectType" required>
+                    <select
+                      class="form-control"
+                      id="projectType"
+                      required
+                      onchange="updateFileInputAccept()"
+                    >
                       <option value="Hardware">Hardware</option>
                       <option value="Software">Software</option>
                     </select>
@@ -179,8 +184,8 @@
                   <div class="form-group col-md-12">
                     <label for="file_upload">Upload Your Code</label>
 
-                    <a href="#">
-                      Need Help? <i class="fa-solid fa-circle-info"></i
+                    <a href="#"
+                      >Need Help? <i class="fa-solid fa-circle-info"></i
                     ></a>
                     <br />
                     <div class="custom-file">
@@ -188,17 +193,23 @@
                         type="file"
                         class="custom-file-input"
                         id="customFile"
-                        onchange="updateFileName(this)"
+                        onchange="updateFileList(this)"
                         required
+                        multiple
                       />
                       <label
                         class="custom-file-label"
                         for="customFile"
                         id="fileLabel"
-                        >Choose file</label
+                        >Choose files</label
                       >
                     </div>
                   </div>
+                </div>
+
+                <div id="fileListContainer" style="display: none">
+                  <h6>Selected Files:</h6>
+                  <ul id="fileList"></ul>
                 </div>
 
                 <div class="input-group">
@@ -257,12 +268,45 @@
     crossorigin="anonymous"
   ></script>
   <script>
-    function updateFileName(inputElement) {
-      const fileName = inputElement.value.split("\\").pop();
+    const fileInput = document.getElementById("customFile");
 
-      const fileLabel = document.getElementById("fileLabel");
-      if (fileLabel) {
-        fileLabel.textContent = fileName;
+    const fileListContainer = document.getElementById("fileListContainer");
+
+    fileInput.addEventListener("change", function () {
+      if (fileInput.files.length > 0) {
+        fileListContainer.style.display = "block";
+      } else {
+        fileListContainer.style.display = "none";
+      }
+    });
+
+    function updateFileInputAccept() {
+      const projectTypeSelect = document.getElementById("projectType");
+      const customFileInput = document.getElementById("customFile");
+
+      const selectedProjectType = projectTypeSelect.value;
+
+      let acceptedTypes = "";
+
+      if (selectedProjectType === "Hardware") {
+        acceptedTypes = "image/*,video/*,pdf/";
+      } else if (selectedProjectType === "Software") {
+        acceptedTypes = "*/*";
+      }
+
+      customFileInput.setAttribute("accept", acceptedTypes);
+    }
+
+    function updateFileList(inputElement) {
+      const fileList = document.getElementById("fileList");
+      fileList.innerHTML = "";
+
+      const files = inputElement.files;
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const listItem = document.createElement("li");
+        listItem.textContent = file.name;
+        fileList.appendChild(listItem);
       }
     }
   </script>

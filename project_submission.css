@@ -125,7 +125,6 @@ label {
   border-radius: 0.5rem;
 }
 
-/* Common styles for input elements */
 .input {
   font-size: 15px;
   text-indent: 15px;
@@ -146,12 +145,10 @@ label {
   color: #fff;
 }
 
-/* Common styles for textarea elements */
 textarea.input {
   resize: none;
 }
 
-/* Common styles for select elements */
 select.input {
   appearance: none;
   background: transparent;
@@ -176,3 +173,12 @@ input[type="file"].input {
 
 /* Additional styles for specific input elements */
 /* Example: input[type="text"].input { ... } */
+
+#fileListContainer {
+  color: white;
+}
+
+/* Add this CSS to your stylesheet */
+.custom-file-input:focus ~ .custom-file-label::after {
+  content: none; /* Hide the selected file name when in focus */
+}
