@@ -8,9 +8,18 @@
 }
 
 #title {
-  margin-left: 2em;
-  margin-right: 29em;
   pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#title-section {
+  text-align: center;
+  white-space: nowrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Navbar Container */
@@ -26,12 +35,6 @@
   justify-content: space-between;
   align-items: center;
   transition: transform 0.3s ease-in-out;
-}
-
-#title-section {
-  text-align: left;
-  /* white-space: nowrap; */
-  width: 200px; /* Adjust the width as needed */
 }
 
 #pages-section {
