@@ -48,22 +48,38 @@ onAuthStateChanged(auth, function (user) {
     // const Twitter = document.getElementById("Twitter").value;
     // Twitter.addEventListener("click", openModal);
     // const modal = document.getElementById("myModal");
-    
-    const openModal = document.getElementById("openModal");
-    const closeModal = document.getElementById("closeModal");
-    const btn = document.getElementById("edit_profile");
 
-    btn.addEventListener("click", () => {
-      openModal.style.display = "block";
+    const modal = document.getElementById("myModal");
+    const btn_close = document.getElementById("btn_close");
+    const editprofile = document.getElementById("editprofile");
+    const closeButton = document.getElementById("closeButton");
+    const edit_profile_submit = document.getElementById("edit_profile_submit");
+
+    editprofile.addEventListener("click", openModal);
+    btn_close.addEventListener("click", closeModal);
+    closeButton.addEventListener("click", closeModal);
+
+    function openModal() {
+      modal.style.display = "block";
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    window.addEventListener("click", (event) => {
+      if (event.target === modal) {
+        closeModal();
+      }
     });
 
-    closeModal.addEventListener("click", () => {
-      openModal.style.display = "none";
-    });
-  } else {
-    console.log("No user is signed in.");
+    edit_profile_submit.addEventListener("click", submitProfileEdit);
   }
 });
+
+// submitProfileEdit(){
+// ...
+// };
 
 // onValue(ref(database, "Universities/1/"), (snapshot) => {
 //   const data = snapshot.val();

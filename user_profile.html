@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" a href="bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="user_profile.css" />
+    <link rel="stylesheet" type="text/css" href="modal.css" />
 
     <script src="bootstrap/js/bootstrap.js"></script>
     <script type="module" src="user_profile.js"></script>
@@ -37,7 +38,7 @@
                   <button
                     type="button"
                     class="btn btn-primary"
-                    id="edit_profile"
+                    id="editprofile"
                   >
                     Edit Profile
                   </button>
@@ -272,6 +273,32 @@
         </div>
       </div>
     </section>
+    <div id="myModal" class="modal" style="display: none">
+      <div class="modal-content">
+        <span class="close" id="closeButton">&times;</span>
+
+        <div class="social-input">
+          <i class="fab fa-linkedin fa-2xl" style="color: #0072b1"></i>
+          <input type="text" id="edit_linkedin" placeholder="Enter LinkedIn" />
+        </div>
+
+        <div class="social-input">
+          <i class="fab fa-github fa-2xl" style="color: #333333"></i>
+          <input type="text" id="edit_github" placeholder="Enter Github" />
+        </div>
+
+        <div class="social-input">
+          <i class="fab fa-twitter fa-2xl" style="color: #55acee"></i>
+          <input type="text" id="edit_twitter" placeholder="Enter Twitter" />
+        </div>
+
+        <p>
+          <br />
+          <button id="edit_profile_submit">Save Changes</button>
+          <button id="btn_close">Cancel</button>
+        </p>
+      </div>
+    </div>
   </body>
   <script
     src="https://kit.fontawesome.com/3d65243769.js"
@@ -279,7 +306,5 @@
   ></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/algoliasearch/lite@3"></script>
-  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4"></script>
   <script type="module" src="user_not_login.js"></script>
 </html>
