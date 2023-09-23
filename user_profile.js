@@ -3,6 +3,8 @@ import {
   getDatabase,
   ref,
   set,
+  get,
+  child,
   onValue,
 } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 
@@ -41,6 +43,31 @@ onAuthStateChanged(auth, function (user) {
     document.getElementById("contact_email").textContent = email;
     document.getElementById("user_email").textContent = email;
     document.getElementById("user_email2").textContent = email;
+
+    const dbref2 = ref(database, "student/" + user.uid);
+
+    get(child(dbref2, `/socials`))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          const socialsData = snapshot.val();
+          const github = socialsData.Github || "N/A";
+          const linkedin = socialsData.LinkedIn || "N/A";
+          const twitter = socialsData.Twitter || "N/A";
+
+          console.log("GitHub:", github);
+          console.log("LinkedIn:", linkedin);
+          console.log("Twitter:", twitter);
+
+          document.getElementById("user_linkedin").textContent = linkedin;
+          document.getElementById("user_github").textContent = github;
+          document.getElementById("user_twitter").textContent = twitter;
+        } else {
+          console.log("No data available");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
 
     const btn_close = document.getElementById("btn_close");
     const editprofile = document.getElementById("editprofile");
@@ -84,7 +111,7 @@ function submitProfileEdit(userid) {
 
   const dbref = ref(database, "student/" + userid + "/socials");
 
-  set(ref(database, "student/" + userid + "/socials"), {
+  set(dbref, {
     LinkedIn: user_linkedin,
     Github: user_github,
     Twitter: user_twitter,
@@ -97,28 +124,28 @@ function submitProfileEdit(userid) {
     });
 
   closeModal();
+  const dbref2 = ref(database, "student/" + user.uid);
 
-  // get(child(linkedRef, `LinkedIn_username`))
-  //   .then((snapshot) => {
-  //     if (snapshot.exists()) {
-  //       console.log(snapshot.val());
-  //     } else {
-  //       console.log("No data available");
-  //     }
-  //   })
-  //   .catch((error) => {
-  //     console.error(error);
-  //   });
+  get(child(dbref2, `/socials`))
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        const socialsData = snapshot.val();
+        const github = socialsData.Github || "N/A";
+        const linkedin = socialsData.LinkedIn || "N/A";
+        const twitter = socialsData.Twitter || "N/A";
 
-  // get(child(githubRef, `Github_username`))
-  //   .then((snapshot) => {
-  //     if (snapshot.exists()) {
-  //       console.log(snapshot.val());
-  //     } else {
-  //       console.log("No data available");
-  //     }
-  //   })
-  //   .catch((error) => {
-  //     console.error(error);
-  //   });
+        console.log("GitHub:", github);
+        console.log("LinkedIn:", linkedin);
+        console.log("Twitter:", twitter);
+
+        document.getElementById("user_linkedin").textContent = linkedin;
+        document.getElementById("user_github").textContent = github;
+        document.getElementById("user_twitter").textContent = twitter;
+      } else {
+        console.log("No data available");
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 }
