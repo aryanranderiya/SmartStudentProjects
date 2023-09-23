@@ -30,31 +30,37 @@ const database = getDatabase(app);
 const auth = getAuth(app);
 const storage = getStorage();
 
-// Function to upload a single file
 function uploadSingleFile(
   file,
   uid,
   projectName,
   projectDescription,
-  projectType
+  projectType,
+  displayName
 ) {
   const fileName = Date.now() + "_" + file.name;
   const fileRef = storageRef(storage, "Projects/" + fileName);
+  console.log("File MIME Type:", file.type);
 
-  // Check the selected project type and allowed file types
   const allowedTypes =
-    projectType === "Hardware" ? ["image/*", "video/*"] : ["application/zip"];
+    projectType === "Hardware"
+      ? ["image/png", "image/jpeg", "video/*"]
+      : projectType === "Software"
+      ? ["application/zip"]
+      : [];
 
   if (!allowedTypes.includes(file.type)) {
-    alert("Invalid file type. Please select the correct project type.");
+    alert(
+      `Invalid file type. Project Type: ${projectType}, File Type: ${file.type}.
+      Please read "Need Help" for assistance in uploading files!`
+    );
     return;
   }
 
-  // Upload the single file to Firebase Storage
   uploadBytes(fileRef, file)
     .then((snapshot) => getDownloadURL(snapshot.ref))
     .then(function (downloadURL) {
-      const project_id = "project_" + uid + "_" + Date.now();
+      const project_id = "project_" + displayName + "_" + Date.now();
       var projectRef = ref(database, "Projects/" + project_id);
 
       set(projectRef, {
@@ -63,12 +69,18 @@ function uploadSingleFile(
         p_description: projectDescription,
         p_type: projectType,
         p_user_id: uid,
+        p_user_name: displayName,
         p_likes: 0,
         file_storage_reference: downloadURL,
-      }).then(() => {
-        console.log("File uploaded: " + fileName);
-        alert("File uploaded successfully!");
-      });
+      })
+        .then(() => {
+          console.log("File uploaded: " + fileName);
+          alert("File uploaded successfully!");
+          window.location.href = "project_submission.html";
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
     })
     .catch(function (error) {
       console.error("Error uploading file to Firebase Storage:", error);
@@ -88,8 +100,6 @@ function uploadFileDataToDatabaseAndStorage(
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      uid = user.uid;
-
       if (selectedFiles.length === 0) {
         alert("Please select a file.");
         return;
@@ -99,10 +109,11 @@ function uploadFileDataToDatabaseAndStorage(
         const file = selectedFiles[i];
         uploadSingleFile(
           file,
-          uid,
+          user.uid,
           projectName,
           projectDescription,
-          projectType
+          projectType,
+          user.displayName
         );
       }
 
@@ -110,7 +121,6 @@ function uploadFileDataToDatabaseAndStorage(
     }
   });
 }
-
 document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("upload-form")
@@ -161,24 +171,24 @@ fileInput.addEventListener("change", function () {
 //   }
 // }
 
-function updateFileInputAccept() {
-  const projectTypeSelect = document.getElementById("projectType");
-  const customFileInput = document.getElementById("customFile");
+// function updateFileInputAccept() {
+//   const projectTypeSelect = document.getElementById("projectType");
+//   const customFileInput = document.getElementById("customFile");
 
-  const selectedProjectType = projectTypeSelect.value;
+//   const selectedProjectType = projectTypeSelect.value;
 
-  let acceptedTypes = "";
+//   let acceptedTypes = "";
 
-  if (selectedProjectType === "Hardware") {
-    acceptedTypes = "image/*,video/*";
-  } else if (selectedProjectType === "Software") {
-    acceptedTypes = ".zip";
-  }
+//   if (selectedProjectType === "Hardware") {
+//     acceptedTypes = "image/*,video/*";
+//   } else if (selectedProjectType === "Software") {
+//     acceptedTypes = ".zip";
+//   }
 
-  customFileInput.setAttribute("accept", acceptedTypes);
-}
+//   customFileInput.setAttribute("accept", acceptedTypes);
+// }
 
-updateFileInputAccept();
+// updateFileInputAccept();
 
 const modal = document.getElementById("myModal");
 const btn_close = document.getElementById("btn_close");
