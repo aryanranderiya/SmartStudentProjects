@@ -36,8 +36,7 @@ login.addEventListener("click", (e) => {
       const token = credential.accessToken;
       const user = result.user;
 
-      alert("Welcome" + user.displayName);
-      window.location.href = "home.html";
+      // alert("Welcome" + user.displayName);
 
       const userRef = ref(db, "student/" + user.uid);
       console.log("User Reference:", userRef.toString());
@@ -48,19 +47,17 @@ login.addEventListener("click", (e) => {
       })
         .then(() => {
           console.log("Data write successful");
+          window.location.href = "home.html";
         })
         .catch((error) => {
           console.error("Error writing data:", error);
         });
     })
     .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      const email = error.customData.email;
-      const credential = GoogleAuthProvider.credentialFromError(error);
-      alert(errorMessage);
+      alert(error);
     });
 });
+
 setPersistence(auth, browserSessionPersistence).catch(function (error) {
   console.log(error);
 });

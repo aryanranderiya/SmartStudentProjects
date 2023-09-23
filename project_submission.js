@@ -44,13 +44,11 @@ function uploadFolderContents(folder, uid, project_id) {
     console.log("Folder name uploaded: " + folderName);
   });
 
-  // Iterate through the folder's contents (files and subfolders)
   const entries = folder.webkitGetAsEntry().createReader();
   entries.readEntries(function (folderContents) {
     for (let j = 0; j < folderContents.length; j++) {
       const entry = folderContents[j];
       if (entry.isFile) {
-        // Upload individual files
         const selectedFile = entry.file();
         const fileName = Date.now() + "_" + entry.name;
         const fileRef = storageRef(
@@ -114,6 +112,7 @@ function uploadDataToDatabaseAndStorage(
         p_description: projectDescription,
         p_type: projectType,
         p_user_id: uid,
+        p_likes: 0,
       }).then(() => {
         console.log("Project details uploaded");
       });

@@ -40,6 +40,26 @@ onAuthStateChanged(auth, function (user) {
     document.getElementById("contact_email").textContent = email;
     document.getElementById("user_email").textContent = email;
     document.getElementById("user_email2").textContent = email;
+
+    // const linkedin = document.getElementById("linkedin").value;
+    // linkedin.addEventListener("click", openModal);
+    // const Github = document.getElementById("Github").value;
+    // Github.addEventListener("click", openModal);
+    // const Twitter = document.getElementById("Twitter").value;
+    // Twitter.addEventListener("click", openModal);
+    // const modal = document.getElementById("myModal");
+    
+    const openModal = document.getElementById("openModal");
+    const closeModal = document.getElementById("closeModal");
+    const btn = document.getElementById("edit_profile");
+
+    btn.addEventListener("click", () => {
+      openModal.style.display = "block";
+    });
+
+    closeModal.addEventListener("click", () => {
+      openModal.style.display = "none";
+    });
   } else {
     console.log("No user is signed in.");
   }
@@ -87,7 +107,7 @@ onAuthStateChanged(auth, function (user) {
 //         collegeData.College_Name.toLowerCase().includes(searchTerm)
 //       ) {
 //         onValue(
-//           ref(database, `Universities/${collegeId}`),
+//           ref(database, Universities/${collegeId}),
 //           (universitySnapshot) => {
 //             universitySnapshot.forEach((universityChildSnapshot) => {
 //               const universityName = universityChildSnapshot
