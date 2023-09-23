@@ -196,6 +196,7 @@
                         onchange="updateFileList(this)"
                         required
                         multiple
+                        webkitdirectory
                       />
                       <label
                         class="custom-file-label"
@@ -221,6 +222,14 @@
                     required
                   ></textarea>
                   <label class="user-label">Project Description</label>
+                </div>
+
+                <div class="checkplagiarism">
+                  <a href="projects.html">
+                    <button class="button_nav" style="font-size: 13px">
+                      Plagiarism Check
+                      <i class="fa-solid fa-check-to-slot"></i></button
+                  ></a>
                 </div>
 
                 <a href="project_submission.html">
@@ -319,9 +328,28 @@
       const files = inputElement.files;
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
-        const listItem = document.createElement("li");
-        listItem.textContent = file.name;
-        fileList.appendChild(listItem);
+
+        if (file.isDirectory) {
+          const listItem = document.createElement("li");
+          listItem.textContent = `Folder: ${file.name}`;
+          fileList.appendChild(listItem);
+
+          const folderFiles = file.webkitGetAsEntry().createReader();
+          folderFiles.readEntries(function (entries) {
+            for (let j = 0; j < entries.length; j++) {
+              const entry = entries[j];
+              if (entry.isFile) {
+                const subListItem = document.createElement("li");
+                subListItem.textContent = `File: ${entry.name}`;
+                fileList.appendChild(subListItem);
+              }
+            }
+          });
+        } else if (file.isFile) {
+          const listItem = document.createElement("li");
+          listItem.textContent = `File: ${file.name}`;
+          fileList.appendChild(listItem);
+        }
       }
     }
   </script>
