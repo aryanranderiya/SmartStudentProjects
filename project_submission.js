@@ -29,6 +29,66 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth(app);
 const storage = getStorage();
+const fileInput = document.getElementById("customFile");
+
+const fileListContainer = document.getElementById("fileListContainer");
+
+fileInput.addEventListener("change", function () {
+  if (fileInput.files.length > 0) {
+    fileListContainer.style.display = "block";
+  } else {
+    fileListContainer.style.display = "none";
+  }
+});
+
+function updateFileInputAccept() {
+  const projectTypeSelect = document.getElementById("projectType");
+  const customFileInput = document.getElementById("customFile");
+
+  const selectedProjectType = projectTypeSelect.value;
+
+  let acceptedTypes = "";
+
+  if (selectedProjectType === "Hardware") {
+    acceptedTypes = "image/*,video/*,pdf/";
+  } else if (selectedProjectType === "Software") {
+    acceptedTypes = "*/*";
+  }
+
+  customFileInput.setAttribute("accept", acceptedTypes);
+}
+
+function updateFileList(inputElement) {
+  const fileList = document.getElementById("fileList");
+  fileList.innerHTML = "";
+
+  const files = inputElement.files;
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i];
+
+    if (file.isDirectory) {
+      const listItem = document.createElement("li");
+      listItem.textContent = `Folder: ${file.name}`;
+      fileList.appendChild(listItem);
+
+      const folderFiles = file.webkitGetAsEntry().createReader();
+      folderFiles.readEntries(function (entries) {
+        for (let j = 0; j < entries.length; j++) {
+          const entry = entries[j];
+          if (entry.isFile) {
+            const subListItem = document.createElement("li");
+            subListItem.textContent = `File: ${entry.name}`;
+            fileList.appendChild(subListItem);
+          }
+        }
+      });
+    } else if (file.isFile) {
+      const listItem = document.createElement("li");
+      listItem.textContent = `File: ${file.name}`;
+      fileList.appendChild(listItem);
+    }
+  }
+}
 
 function uploadDataToDatabaseAndStorage(
   projectName,
