@@ -2,6 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebas
 import {
   getDatabase,
   ref,
+  set,
   onValue,
 } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 
@@ -41,15 +42,6 @@ onAuthStateChanged(auth, function (user) {
     document.getElementById("user_email").textContent = email;
     document.getElementById("user_email2").textContent = email;
 
-    // const linkedin = document.getElementById("linkedin").value;
-    // linkedin.addEventListener("click", openModal);
-    // const Github = document.getElementById("Github").value;
-    // Github.addEventListener("click", openModal);
-    // const Twitter = document.getElementById("Twitter").value;
-    // Twitter.addEventListener("click", openModal);
-    // const modal = document.getElementById("myModal");
-
-    const modal = document.getElementById("myModal");
     const btn_close = document.getElementById("btn_close");
     const editprofile = document.getElementById("editprofile");
     const closeButton = document.getElementById("closeButton");
@@ -59,153 +51,74 @@ onAuthStateChanged(auth, function (user) {
     btn_close.addEventListener("click", closeModal);
     closeButton.addEventListener("click", closeModal);
 
-    function openModal() {
-      modal.style.display = "block";
-    }
-
-    function closeModal() {
-      modal.style.display = "none";
-    }
+    edit_profile_submit.addEventListener("click", function () {
+      submitProfileEdit(user.uid);
+    });
 
     window.addEventListener("click", (event) => {
       if (event.target === modal) {
         closeModal();
       }
     });
-
-    edit_profile_submit.addEventListener("click", submitProfileEdit);
   }
 });
 
-// submitProfileEdit(){
-// ...
-// };
+const modal = document.getElementById("myModal");
 
-// onValue(ref(database, "Universities/1/"), (snapshot) => {
-//   const data = snapshot.val();
-//   var universitiesComboBox = document.getElementById(
-//     "universitiesComboBox"
-//   );
+function openModal() {
+  modal.style.display = "block";
+}
 
-//   universitiesComboBox.innerHTML =
-//     '<option value="">Select University</option>';
+function closeModal() {
+  modal.style.display = "none";
+}
 
-//   snapshot.forEach(function (childSnapshot) {
-//     var universityName = childSnapshot.val();
+function submitProfileEdit(userid) {
+  const linkedinInput = document.getElementById("edit_linkedin");
+  const githubInput = document.getElementById("edit_github");
+  const twitterInput = document.getElementById("edit_twitter");
 
-//     var option = document.createElement("option");
-//     option.value = universityName;
-//     option.textContent = universityName;
-//     universitiesComboBox.appendChild(option);
-//   });
-// });
+  var user_linkedin = linkedinInput.value;
+  var user_github = githubInput.value;
+  var user_twitter = twitterInput.value;
 
-// REMOVE THIS CODE AND REPLACE WITH ALGOLIA SEARCH FOR FAST SEARCH
+  const dbref = ref(database, "student/" + userid + "/socials");
 
-// const universitySelectInput = document.getElementById("universitySelect");
+  set(ref(database, "student/" + userid + "/socials"), {
+    LinkedIn: user_linkedin,
+    Github: user_github,
+    Twitter: user_twitter,
+  })
+    .then(() => {
+      console.log("Socials data updated successfully.");
+    })
+    .catch((error) => {
+      console.error("Error updating LinkedIn data:", error);
+    });
 
-// universitySelectInput.addEventListener("input", handleUniversitySearch);
+  closeModal();
 
-// function handleUniversitySearch() {
-//   const searchTerm = universitySelectInput.value.toLowerCase();
+  // get(child(linkedRef, `LinkedIn_username`))
+  //   .then((snapshot) => {
+  //     if (snapshot.exists()) {
+  //       console.log(snapshot.val());
+  //     } else {
+  //       console.log("No data available");
+  //     }
+  //   })
+  //   .catch((error) => {
+  //     console.error(error);
+  //   });
 
-//   const universitySelect = document.getElementById("universitySelect");
-//   universitySelect.innerHTML = "";
-
-//   onValue(ref(database, "Universities"), (snapshot) => {
-//     snapshot.forEach((collegeSnapshot) => {
-//       const collegeId = collegeSnapshot.key;
-//       const collegeData = collegeSnapshot.val();
-
-//       if (
-//         collegeData &&
-//         collegeData.College_Name &&
-//         collegeData.College_Name.toLowerCase().includes(searchTerm)
-//       ) {
-//         onValue(
-//           ref(database, Universities/${collegeId}),
-//           (universitySnapshot) => {
-//             universitySnapshot.forEach((universityChildSnapshot) => {
-//               const universityName = universityChildSnapshot
-//                 .val()
-//                 .toLowerCase();
-
-//               const option = document.createElement("option");
-//               option.value = universityName;
-//               option.textContent = universityChildSnapshot.val();
-//               universitySelect.appendChild(option);
-//             });
-//           }
-//         );
-//       }
-//     });
-//   });
-// }
-
-//   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-//   import {
-//     getDatabase,
-//     ref,
-//     set,
-//   } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
-
-//   const firebaseConfig = {
-//     databaseURL:
-//       "https://smart-student-projects-default-rtdb.firebaseio.com/",
-//   };
-
-//   const app = initializeApp(firebaseConfig);
-//   const database = getDatabase(app);
-
-//   var apiUrl =
-//     "https://api.data.gov.in/resource/44bea382-c525-4740-8a07-04bd20a99b52?api-key=579b464db66ec23bdd00000159244116cf4748d26db4af8a31c90893&format=json";
-
-//   function fetchPage(pageNumber) {
-//     var pageUrl = apiUrl + "&offset=" + pageNumber * 10;
-
-//     fetch(pageUrl)
-//       .then((response) => response.json())
-//       .then((data) => {
-//         var colleges = data.records;
-
-//         colleges.forEach(function (college, index) {
-//           const db = getDatabase();
-//           set(ref(db, "Universities/" + college.s_no_), {
-//             College_Name: college.college_name,
-//             State: college.state_name,
-//             District: college.district_name,
-//           })
-//             .then(() => {
-//               console.log(
-//                 "Data for ID " + college.s_no_ + " uploaded successfully."
-//               );
-//             })
-//             .catch((error) => {
-//               console.error(
-//                 "Error uploading data for ID " +
-//                   college.s_no_ +
-//                   ": " +
-//                   error.message
-//               );
-//             });
-
-//           console.log("ID: " + college.s_no_);
-
-//           //   console.log("University Name: " + college.university_name);
-//           console.log("College Name: " + college.college_name);
-//           //   console.log("College Type: " + college.college_type);
-//           //   console.log("State Name: " + college.state_name);
-//           //   console.log("District Name: " + college.district_name);
-//           console.log("\n");
-//         });
-
-//         if (colleges.length === 10) {
-//           fetchPage(pageNumber + 1);
-//         }
-//       })
-//       .catch((error) => {
-//         console.error("Error fetching data:", error);
-//       });
-//   }
-
-//   fetchPage(0);
+  // get(child(githubRef, `Github_username`))
+  //   .then((snapshot) => {
+  //     if (snapshot.exists()) {
+  //       console.log(snapshot.val());
+  //     } else {
+  //       console.log("No data available");
+  //     }
+  //   })
+  //   .catch((error) => {
+  //     console.error(error);
+  //   });
+}
