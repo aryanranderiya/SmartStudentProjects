@@ -60,6 +60,7 @@ function uploadSingleFile(
   uploadBytes(fileRef, file)
     .then((snapshot) => getDownloadURL(snapshot.ref))
     .then(function (downloadURL) {
+      console.log("Upload bytes method called");
       const project_id = "project_" + displayName + "_" + Date.now();
       var projectRef = ref(database, "Projects/" + project_id);
 
@@ -95,6 +96,8 @@ function uploadFileDataToDatabaseAndStorage(
   projectType,
   uid
 ) {
+  console.log("uploadFileDataToDatabaseAndStorage method called");
+
   var fileInput = document.getElementById("customFile");
   var selectedFiles = fileInput.files;
 
@@ -125,6 +128,8 @@ document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("upload-form")
     .addEventListener("submit", function (e) {
+      console.log("DOMContentLoaded Event listener called");
+
       e.preventDefault();
       var projectName = document.getElementById("projectTitle").value;
       var projectDescription =

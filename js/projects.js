@@ -17,9 +17,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
-
 document.addEventListener("DOMContentLoaded", function () {
-  const container = document.getElementById("projectContainer");
+  const container = document.querySelector(".pcontainer");
 
   const projectsRef = ref(database, "Projects/");
 
@@ -27,6 +26,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const data = snapshot.val();
 
     if (data !== null) {
+      let cardCount = 0;
+      let currentRow = document.createElement("div");
+      currentRow.classList.add("row");
+
       for (const projectId in data) {
         const projectData = data[projectId];
 
@@ -37,16 +40,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
           card.innerHTML = `
           <h2>${projectData.p_name}</h2>
-          <p>
-          Description: ${projectData.p_description}<br>
-          Type: ${projectData.p_type}<br>
-          User ID: ${projectData.p_user_id}<br>
-          <i class="fa-solid fa-thumbs-up fa-xl"></i> Likes: ${projectData.p_likes}<br>
-          <a href="${projectData.file_storage_reference}" target="_blank">View File</a></p>
+          <p class="made-by">Made by: ${projectData.p_user_name}</p>
+          <p class="content">
+          <b>Type:</b> ${projectData.p_type}<br>
+          <b>Description:</b> ${projectData.p_description}<br></p>
+          <h5><i class="fa-solid fa-thumbs-up fa-xl"></i> <b>Likes:</b> ${projectData.p_likes}<br></h5>
+          <a href="${projectData.file_storage_reference}" target="_blank">View File</a>
         `;
 
-          container.appendChild(card);
+          currentRow.appendChild(card);
+          cardCount++;
+
+          if (cardCount === 3) {
+            container.appendChild(currentRow);
+            currentRow = document.createElement("div");
+            currentRow.classList.add("row");
+            cardCount = 0;
+          }
         }
+      }
+
+      if (cardCount > 0) {
+        container.appendChild(currentRow);
       }
     }
   });
