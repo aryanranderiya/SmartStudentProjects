@@ -2,13 +2,25 @@
   font-family: "CustomHelvetica";
   src: url(Helvetica.ttf);
 }
+
+body {
+  background-image: linear-gradient(120deg, #121212 0%, #424242 100%);
+  color: white;
+}
+
+h5,
+h4,
+* {
+  color: white;
+}
+
 #card_id {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.158);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(15.2px);
   -webkit-backdrop-filter: blur(15.2px);
-  border: 2px solid rgba(255, 255, 255, 1);
+  border: 2px solid rgba(255, 255, 255, 0.548);
 }
 
 .social-input {
@@ -27,6 +39,21 @@ input {
   padding: 7px;
 }
 
+.btn {
+  background-color: #00bbff;
+}
+
 .social-input i {
   margin-right: 10px;
+}
+
+#edit_profile_submit,
+#btn_close {
+  color: black;
+  border-radius: 10px;
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+  padding: 5px;
+  margin: 10px;
 }
