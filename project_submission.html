@@ -114,20 +114,15 @@
     <div id="content">
       <div class="container">
         <br /><br />
-        <div class="row row align-items-center">
+        <div class="row row">
           <div class="col-sm">
-            <div class="container" style="width: fit-content">
-              <h2 style="color: #fff">
-                <b
-                  >Let's bring Innovation to Universities around the Country!<br />Tell
-                  us about your project</b
-                >
-              </h2>
-              <p style="color: #00bbff">
-                Innovation's the name, collabarations the game,<br />
-                Together we all change the world,<br />
-                it's never the same
-              </p>
+            <div class="container left_container" style="width: fit-content">
+              <h2 style="color: #fff"><b> Tell us about your project...</b></h2>
+              <h4 style="color: #fff">
+                Let's bring Innovation to Universities around the Country!
+              </h4>
+              <p style="color: #00bbff">some text</p>
+              <img src="upload_project.png" height="400px" />
             </div>
           </div>
           <div class="col-sm">
@@ -171,7 +166,7 @@
                     <label class="user-label">Project Type</label>
                   </div> -->
 
-                  <div class="form-group col-md-6">
+                  <div class="form-group col-md-12">
                     <label for="type">Project Type</label>
                     <select class="form-control" id="projectType" required>
                       <option value="Hardware">Hardware</option>
@@ -181,8 +176,13 @@
                 </div>
 
                 <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label for="file_upload">Upload video or photo</label>
+                  <div class="form-group col-md-12">
+                    <label for="file_upload">Upload Your Code</label>
+
+                    <a href="#">
+                      Need Help? <i class="fa-solid fa-circle-info"></i
+                    ></a>
+                    <br />
                     <div class="custom-file">
                       <input
                         type="file"
@@ -201,25 +201,33 @@
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="query">Description</label>
+                <div class="input-group">
                   <textarea
-                    class="form-control"
                     id="projectDescription"
+                    class="input"
                     rows="5"
                     name="user_query"
-                    placeholder="Enter project Description here..."
                     required
                   ></textarea>
+                  <label class="user-label">Project Description</label>
                 </div>
-                <button
-                  style="background-color: #00bbff"
-                  type="submit"
-                  class="btn btn-primary"
-                  id="submit"
-                >
-                  upload
-                </button>
+
+                <a href="project_submission.html">
+                  <button
+                    class="button_green"
+                    type="submit"
+                    id="submit"
+                    style="
+                      font-size: 13px;
+                      margin-bottom: 10px;
+                      margin-top: 10px;
+                      margin-right: 10px;
+                    "
+                  >
+                    Submit Project
+                    <i class="fa-solid fa-upload"></i>
+                  </button>
+                </a>
               </form>
             </div>
           </div>
