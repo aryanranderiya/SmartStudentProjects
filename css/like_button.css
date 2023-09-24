@@ -1,0 +1,68 @@
+.like_container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.like_container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 25px;
+  user-select: none;
+  transition: 100ms;
+}
+
+.checkmark {
+  top: 0;
+  left: 0;
+  height: 2em;
+  width: 2em;
+  transition: 100ms;
+  animation: dislike_401 400ms ease;
+}
+
+.like_container input:checked ~ .checkmark path {
+  fill: #1c7dff;
+  stroke-width: 1.2;
+  stroke: #212121;
+  /*same background color*/
+}
+
+.like_container input:checked ~ .checkmark {
+  animation: like_401 400ms ease;
+}
+
+.like_container:hover {
+  transform: scale(1.1);
+}
+
+@keyframes like_401 {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes dislike_401 {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
