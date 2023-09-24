@@ -9,7 +9,7 @@
 .logo_info {
   align-items: center;
   justify-content: center;
-  width: 65%;
+  width: 55%;
   margin: 3% auto 0;
   background: rgba(255, 255, 255, 0.171);
   border-radius: 16px;
@@ -39,7 +39,7 @@
 #tagline {
   margin-bottom: 20px;
   margin-top: -20px;
-  /* font-style: italic; */
+  font-style: italic;
   font-size: 15px;
 }
 
