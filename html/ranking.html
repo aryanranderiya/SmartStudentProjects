@@ -4,14 +4,78 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Leader Board using HTML CSS and Javascript</title>
-	<link rel="stylesheet" href="\css\styles.css">
+	<link rel="stylesheet" href="\css\ranking.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="\css\navbar.css" />
+	<link rel="stylesheet" type="text/css" href="\css\button.css" />
+	<link rel="stylesheet" type="text/css" href="\css\button_green.css" />
+	<script type="module" src="\js\navbar.js"></script>
 </head>
 
 <body style="background-color: #595959;">
+	<header>
+		<div class="navbar">
+			<div class="navbar-section" id="title-section">
+				<a id="title">
+					<img src="\images\logo2.png" height="50px" /> Smart Student
+					Projects</a>
+			</div>
 
+			<div class="navbar-section" id="pages-section">
+				<a href="home.html">
+					<button class="button_nav" style="font-size: 13px">
+						<i class="fa-solid fa-house"></i>
+						Home
+					</button></a>
+				<a href="about.html">
+					<button class="button_nav" style="font-size: 13px">
+						<i class="fa-solid fa-address-card"></i>
+						About
+					</button></a>
+				<a href="ranking.html">
+					<button class="button_nav" style="font-size: 13px" id="active">
+						<i class="fa-solid fa-ranking-star"></i>
+						Ranking
+					</button></a>
+
+				<a href="projects.html">
+					<button class="button_nav" style="font-size: 13px">
+						<i class="fa-solid fa-lightbulb"></i>
+						Projects
+					</button></a>
+			</div>
+
+			<div class="navbar-section" id="login-profile-section">
+				<a href="project_submission.html" id="menu_submit_project">
+					<button class="button_green" style="
+                font-size: 13px;
+                margin-bottom: 10px;
+                margin-top: 10px;
+                margin-right: 10px;
+              ">
+						Upload
+						<i class="fa-solid fa-plus"></i>
+					</button>
+				</a>
+
+				<a href="login_register.html" id="menu_loginregister">
+					<button class="button_nav" style="font-size: 13px">
+						<i class="fa-solid fa-right-to-bracket"></i>
+						Login/Register
+					</button></a>
+				<a href="user_profile.html">
+					<button class="button_nav" style="font-size: 13px" id="menu_profile">
+						<i class="fa-solid fa-user"></i>
+						Profile
+					</button></a>
+
+				<a href="#"><button class="button_nav" id="menu_logout" style="background: red">
+						<i class="fa-solid fa-right-from-bracket fa-lg" style="color: #fff"></i></button></a>
+			</div>
+		</div>
+	</header>
 	<div class="wrapper">
-		<div class="lboard_section">
+		<div class="lboard_section" style="margin-top: 50px; margin-bottom: 50px;">
 			<div class="lboard_tabs">
 				<div class="tabs">
 					<ul>
