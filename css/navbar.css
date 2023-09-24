@@ -67,6 +67,7 @@
 .navbar a:hover {
   color: #00bbff;
   transform: scale(1.06);
+  text-decoration: none;
 }
 
 .active {

@@ -6,24 +6,40 @@
 * {
   font-family: "CustomHelvetica", Arial, Helvetica, sans-serif;
 }
-
 .logo_info {
   align-items: center;
   justify-content: center;
   width: 65%;
-  padding: 10px;
   margin: 3% auto 0;
-
   background: rgba(255, 255, 255, 0.171);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(15.2px);
   -webkit-backdrop-filter: blur(15.2px);
   border: 1px solid rgba(255, 255, 255, 0.23);
+  text-align: center;
+}
+
+.logo_info img {
+  width: 100%;
+  height: auto;
+  max-height: calc(100% - 40px);
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: -5px;
+}
+
+.logo_info h1 {
+  margin-top: 20px;
+  padding: 0;
+  font-size: 40px;
+  z-index: 1;
 }
 
 #tagline {
-  font-style: italic;
+  margin-bottom: 20px;
+  margin-top: -20px;
+  /* font-style: italic; */
   font-size: 15px;
 }
 
