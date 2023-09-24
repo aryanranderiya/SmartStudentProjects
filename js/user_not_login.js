@@ -25,6 +25,6 @@ const auth = getAuth(app);
 
 auth.onAuthStateChanged(function (user) {
   if (!user) {
-    window.location.href = "login_register.html";
+    window.location.href = "index.html";
   }
 });
