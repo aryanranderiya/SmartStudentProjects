@@ -36,18 +36,24 @@ login.addEventListener("click", (e) => {
       const token = credential.accessToken;
       const user = result.user;
 
-      // alert("Welcome" + user.displayName);
-
       const userRef = ref(db, "student/" + user.uid);
       console.log("User Reference:", userRef.toString());
 
       set(userRef, {
         name: user.displayName,
         email: user.email,
+        profile_image: user.photoURL,
+        college: "",
+        socials: {
+          Github: "",
+          Linkedin: "",
+          Twitter: "",
+        },
       })
         .then(() => {
           console.log("Data write successful");
           window.location.href = "home.html";
+          alert("Welcome" + user.displayName);
         })
         .catch((error) => {
           console.error("Error writing data:", error);

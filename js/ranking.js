@@ -1,7 +1,7 @@
 var tabs = document.querySelectorAll(".lboard_tabs ul li");
-var today = document.querySelector(".today");
-var month = document.querySelector(".month");
-var year = document.querySelector(".year");
+var students = document.querySelector(".students");
+var universities = document.querySelector(".universities");
+var projects = document.querySelector(".projects");
 var items = document.querySelectorAll(".lboard_item");
 
 tabs.forEach(function (tab) {
@@ -18,12 +18,12 @@ tabs.forEach(function (tab) {
       item.style.display = "none";
     });
 
-    if (currenttab == "today") {
-      today.style.display = "block";
-    } else if (currenttab == "month") {
-      month.style.display = "block";
+    if (currenttab == "students") {
+      students.style.display = "block";
+    } else if (currenttab == "universities") {
+      universities.style.display = "block";
     } else {
-      year.style.display = "block";
+      projects.style.display = "block";
     }
   });
 });
