@@ -197,8 +197,12 @@ fileInput.addEventListener("change", function () {
 
 const modal = document.getElementById("myModal");
 const btn_close = document.getElementById("btn_close");
+const helpLink = document.getElementById("helpLink");
+const closeButton = document.getElementById("closeButton");
 
+helpLink.addEventListener("click", openModal);
 btn_close.addEventListener("click", closeModal);
+closeButton.addEventListener("click", closeModal);
 
 function openModal() {
   modal.style.display = "block";
@@ -207,12 +211,6 @@ function openModal() {
 function closeModal() {
   modal.style.display = "none";
 }
-
-const helpLink = document.getElementById("helpLink");
-helpLink.addEventListener("click", openModal);
-
-const closeButton = document.getElementById("closeButton");
-closeButton.addEventListener("click", closeModal);
 
 window.addEventListener("click", (event) => {
   if (event.target === modal) {
