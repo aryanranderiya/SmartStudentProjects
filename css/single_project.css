@@ -1,30 +1,26 @@
-@font-face {
-  font-family: "CustomHelvetica";
-  src: url(Helvetica.ttf);
-}
-
 body {
   background-image: linear-gradient(120deg, #121212 0%, #424242 100%);
   color: white;
 }
 
-h5,
-h4,
-p,
-h2,
-h3 {
-  color: white;
+/* Add any other custom styles as needed */
+.card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
 }
 
-#card_id {
+.card {
+  width: 45%; /* Make the top card full width */
+  margin-bottom: 20px;
   background: rgba(255, 255, 255, 0.158);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(15.2px);
   -webkit-backdrop-filter: blur(15.2px);
   border: 2px solid rgba(255, 255, 255, 0.548);
-  padding-left: 10px;
-  padding-right: 10px;
 }
 
 .social-input {
@@ -35,31 +31,8 @@ h3 {
   justify-content: center;
 }
 
-input {
-  /* background: transparent; */
-  border-radius: 10px;
-  border: 2px;
-  border-color: black;
-  padding: 7px;
-}
-
 .btn {
   background-color: #00bbff;
-}
-
-.social-input i {
-  margin-right: 10px;
-}
-
-#edit_profile_submit,
-#btn_close {
-  color: black;
-  border-radius: 10px;
-  border-width: 2px;
-  border-color: black;
-  border-style: solid;
-  padding: 5px;
-  margin: 10px;
 }
 
 #wrapper {
@@ -67,15 +40,7 @@ input {
   align-items: center;
   justify-content: center;
   transition: all 300ms ease;
-  width: 150px;
-  height: 150px;
-}
-
-svg {
-  width: 50px;
-  pointer-events: none;
-  position: absolute;
-  z-index: 2;
+  margin-top: 20px;
 }
 
 #btnOff,
@@ -92,4 +57,30 @@ svg {
   background: linear-gradient(180deg, #32a3fb, #1455ec);
   opacity: 0;
   pointer-events: none;
+}
+
+/* Adjust the layout of the card content */
+.card-body {
+  padding: 20px;
+}
+
+.card-body p {
+  margin-bottom: 10px; /* Add margin between paragraphs */
+}
+
+/* Center the "Project Made By" and "Like this Project" cards */
+.bottom-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.bottom-card {
+  width: 48%; /* Adjust the width as needed */
+  margin-right: 10px; /* Add margin between cards */
+}
+
+/* To remove margin from the last card in a row */
+.bottom-card:last-child {
+  margin-right: 0;
 }

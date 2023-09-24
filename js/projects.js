@@ -45,7 +45,8 @@ document.addEventListener("DOMContentLoaded", function () {
           <b>Type:</b> ${projectData.p_type}<br>
           <b>Description:</b> ${projectData.p_description}<br></p>
           <h5><i class="fa-solid fa-thumbs-up fa-xl"></i> <b>Likes:</b> ${projectData.p_likes}<br></h5>
-          <a href="${projectData.file_storage_reference}" target="_blank">View File</a>
+          <a href="${projectData.file_storage_reference}" target="_blank">View Files</a>
+          <a href="singleProject.html" target="_blank">View Project</a>
         `;
 
           currentRow.appendChild(card);

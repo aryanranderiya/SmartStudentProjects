@@ -118,6 +118,7 @@ function submitProfileEdit(userid) {
   })
     .then(() => {
       console.log("Socials data updated successfully.");
+      window.location.href = "user_profile.html";
     })
     .catch((error) => {
       console.error("Error updating LinkedIn data:", error);
