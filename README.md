@@ -1,6 +1,8 @@
 # SmartStudentProjects
 An online integrated platform that compiles and showcases student projects from various universities and colleges in India. This platform will promote knowledge sharing, innovation, and collaboration among students and educators.
 
+This is my first project and my first ever time developing a website using firebase and javasccript. Screenshots are attached below!
+
 # Screenshots
 ![be1c8f92fca1acd01268eb0bc9416db457fb5b3e](https://github.com/aryanranderiya/SmartStudentProjects/assets/64796509/48d50f39-a08a-4c8c-973e-6c2921ddd333)
 ![2915f612316a4a57416b67062867392a6ffdf66a](https://github.com/aryanranderiya/SmartStudentProjects/assets/64796509/722b2ec0-79af-4919-a32f-85d1ad142047)
