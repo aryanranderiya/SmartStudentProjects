@@ -124,6 +124,7 @@ function uploadFileDataToDatabaseAndStorage(
     }
   });
 }
+
 document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("upload-form")

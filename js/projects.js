@@ -17,6 +17,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
+
+
 document.addEventListener("DOMContentLoaded", function () {
   const container = document.querySelector(".pcontainer");
 
